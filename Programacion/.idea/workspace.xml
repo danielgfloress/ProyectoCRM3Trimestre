@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="Database and Controllers add to proyect">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/AgendaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/AgendaRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClaseRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClienteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClienteRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ConfiguracionGymRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ConfiguracionGymRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/MembresiaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/UsuarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/UsuarioRepositoryImpl.java" afterDir="false" />
+    <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="MembresiaRepositoryImpl add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gymtonic/contorollers/ConfiguracionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/contorollers/ConfiguracionGymController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,12 +59,30 @@
       <option name="project" value="LOCAL" />
       <updated>1778573672686</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Repository class add and configuration name change">
+      <option name="closed" value="true" />
+      <created>1778574896980</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1778574896981</updated>
+    </task>
+    <task id="LOCAL-00005" summary="MembresiaRepositoryImpl add">
+      <option name="closed" value="true" />
+      <created>1778574962720</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778574962721</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="entities add" />
     <MESSAGE value="Database and Controllers add to proyect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Database and Controllers add to proyect" />
+    <MESSAGE value="Repository class add and configuration name change" />
+    <MESSAGE value="MembresiaRepositoryImpl add" />
+    <option name="LAST_COMMIT_MESSAGE" value="MembresiaRepositoryImpl add" />
   </component>
 </project>
