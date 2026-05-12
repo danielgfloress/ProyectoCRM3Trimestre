@@ -1,13 +1,5 @@
--- ============================================================
---  GymCRM — DML INSERT MySQL Workbench
---  Cubre las 5 tablas del modelo académico + tablas del frontend
--- ============================================================
-
 USE crm_gimnasio;
 
--- ------------------------------------------------------------
---  Modelo académico
--- ------------------------------------------------------------
 INSERT INTO clientes (nombre, email, telefono, direccion, fecha_alta) VALUES
     ('Carlos Martínez', 'carlos@xtart.com',  '612345678', 'Calle Mayor 12, Madrid',      '2026-01-10'),
     ('Laura Sánchez',   'laura@xtart.com',   '623456789', 'Avenida del Sol 5, Madrid',   '2026-02-15'),
@@ -22,30 +14,7 @@ INSERT INTO usuarios (nombre, email, rol, password_hash) VALUES
     ('Raúl Jiménez',  'raul@gymtonic.com',  'entrenador',    'hash4'),
     ('Elena Moreno',  'elena@gymtonic.com', 'recepcionista', 'hash5');
 
-INSERT INTO productos (nombre, descripcion, precio, categoria) VALUES
-    ('Cuota Mensual',    'Acceso completo al gimnasio durante un mes',     34.99, 'cuota'),
-    ('Cuota Trimestral', 'Acceso completo al gimnasio durante tres meses', 89.99, 'cuota'),
-    ('Clase de Yoga',    'Sesión grupal de yoga de 90 minutos',            12.00, 'clase'),
-    ('Clase de Spinning','Sesión grupal de spinning de 45 minutos',        10.00, 'clase'),
-    ('Personal Trainer', 'Sesión individual con entrenador personal',      40.00, 'personal trainer');
 
-INSERT INTO ventas (cliente_id, usuario_id, fecha, estado, total) VALUES
-    (1, 2, '2026-01-11', 'activo',    34.99),
-    (2, 2, '2026-02-16', 'activo',    89.99),
-    (3, 3, '2026-03-21', 'pendiente', 12.00),
-    (4, 4, '2026-04-06', 'activo',    40.00),
-    (5, 5, '2026-05-11', 'cancelado', 10.00);
-
-INSERT INTO detalle_venta (venta_id, producto_id, cantidad, precio_unitario) VALUES
-    (1, 1, 1, 34.99),
-    (2, 2, 1, 89.99),
-    (3, 3, 1, 12.00),
-    (4, 5, 1, 40.00),
-    (5, 4, 1, 10.00);
-
--- ------------------------------------------------------------
---  Tablas del frontend JS
--- ------------------------------------------------------------
 INSERT INTO membresias (nombre, precio, duracion) VALUES
     ('Básica',     25.00, '1 mes'),
     ('Premium',    40.00, '1 mes'),
@@ -62,10 +31,10 @@ INSERT INTO clases (nombre, instructor, horario, capacidad_maxima, inscritos, ni
 
 INSERT INTO configuracion
     (gym_nombre, gym_email, gym_telefono, gym_direccion,
-     horario_lv_abre, horario_lv_cierra, horario_sab_abre, horario_sab_cierra, usuario_id)
+    horario_lv_abre, horario_lv_cierra, horario_sab_abre, horario_sab_cierra, usuario_id)
 VALUES
     ('GymCRM Centro', 'info@gymtonic.com', '621 003 320', 'Calle Tridente 67, Alicante',
-     '07:00:00', '22:00:00', '09:00:00', '20:00:00', 1);
+    '07:00:00', '22:00:00', '09:00:00', '20:00:00', 1);
 
 INSERT INTO agenda (clase_id, cliente_id, fecha, hora, estado) VALUES
     (1, 1,    '2026-05-08', '09:00', 'confirmado'),
