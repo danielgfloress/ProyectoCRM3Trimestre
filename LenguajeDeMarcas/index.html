@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymTonic - Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__header">
+                <h1 class="sidebar__title">Gym<span class="sidebar__title--highlight">Tonic</span></h1>
+            </div>
+            <nav class="sidebar__nav">
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="index.html" class="sidebar__link sidebar__link--active">
+                            <i class="fas fa-home sidebar__icon"></i><span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="pages/clientes.html" class="sidebar__link">
+                            <i class="fas fa-users sidebar__icon"></i><span>Clientes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="pages/clases.html" class="sidebar__link">
+                            <i class="fas fa-dumbbell sidebar__icon"></i><span>Clases</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="pages/agenda.html" class="sidebar__link">
+                            <i class="fas fa-calendar-alt sidebar__icon"></i><span>Agenda</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="pages/configuracion.html" class="sidebar__link">
+                            <i class="fas fa-cog sidebar__icon"></i><span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main" id="main">
+
+            <!-- HEADER -->
+            <header class="header" id="header">
+                <div class="header__left">
+                    <button class="header__menu-btn" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 class="header__title">Inicio</h2>
+                </div>
+                <div class="header__right">
+                    <button class="header__notification"><i class="fas fa-bell"></i></button>
+                    <div class="header__user">
+                        <div class="header__avatar"><i class="fas fa-user"></i></div>
+                        <span class="header__username">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <!-- WELCOME -->
+                <div class="welcome">
+                    <div class="welcome__text">
+                        <h3 class="welcome__title">¡Bienvenido, Admin!</h3>
+                        <p class="welcome__sub">Aquí tienes el resumen de hoy, <span id="fecha"></span></p>
+                    </div>
+                </div>
+
+                <!-- CARDS -->
+                <div class="cards">
+                    <div class="card">
+                        <h3 class="card__title">Clientes Activos</h3>
+                        <p class="card__value">124</p>
+                        <div class="card__footer card__footer--success">+5% este mes</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Clases Hoy</h3>
+                        <p class="card__value">8</p>
+                        <div class="card__footer">3 por la mañana · 5 por la tarde</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Ingresos del Mes</h3>
+                        <p class="card__value">€4.280</p>
+                        <div class="card__footer card__footer--success">+8% vs mes anterior</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Membresías por Vencer</h3>
+                        <p class="card__value">7</p>
+                        <div class="card__footer card__footer--warning">Esta semana</div>
+                    </div>
+                </div>
+
+                <!-- ACTIVIDAD RECIENTE -->
+                <div class="table-container">
+                    <table class="table">
+                        <thead class="table__header">
+                            <tr>
+                                <th class="table__th">Cliente</th>
+                                <th class="table__th">Actividad</th>
+                                <th class="table__th">Clase</th>
+                                <th class="table__th">Hora</th>
+                                <th class="table__th">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar">JP</div>
+                                        <div>
+                                            <div class="table__name">Juan Pérez</div>
+                                            <div class="table__email">juan@xtart.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Check-in</td>
+                                <td class="table__td">Spinning</td>
+                                <td class="table__td">09:00</td>
+                                <td class="table__td"><span class="badge badge--success">Asistió</span></td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar">MG</div>
+                                        <div>
+                                            <div class="table__name">María García</div>
+                                            <div class="table__email">maria@xtart.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Reserva</td>
+                                <td class="table__td">Yoga</td>
+                                <td class="table__td">10:30</td>
+                                <td class="table__td"><span class="badge badge--primary">Reservado</span></td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar">CL</div>
+                                        <div>
+                                            <div class="table__name">Carlos López</div>
+                                            <div class="table__email">carlos@xtart.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Renovación</td>
+                                <td class="table__td">Membresía VIP</td>
+                                <td class="table__td">11:15</td>
+                                <td class="table__td"><span class="badge badge--success">Completado</span></td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar">LR</div>
+                                        <div>
+                                            <div class="table__name">Laura Ruiz</div>
+                                            <div class="table__email">laura@xtart.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Check-in</td>
+                                <td class="table__td">Pilates</td>
+                                <td class="table__td">12:00</td>
+                                <td class="table__td"><span class="badge badge--success">Asistió</span></td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar">AM</div>
+                                        <div>
+                                            <div class="table__name">Andrés Mora</div>
+                                            <div class="table__email">andres@xtart.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Alta nueva</td>
+                                <td class="table__td">—</td>
+                                <td class="table__td">13:40</td>
+                                <td class="table__td"><span class="badge badge--warning">Pendiente pago</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/fecha.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>
