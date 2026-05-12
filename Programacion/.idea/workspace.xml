@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="">
+    <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="Database and Controllers add to proyect">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/AgendaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/AgendaRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClaseRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClienteRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ClienteRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ConfiguracionGymRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/ConfiguracionGymRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/MembresiaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/UsuarioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/repository/UsuarioRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gymtonic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gymtonic/contorollers/ConfiguracionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/contorollers/ConfiguracionGymController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +27,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -43,7 +55,28 @@
       <option name="project" value="LOCAL" />
       <updated>1778569396335</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="entities add">
+      <option name="closed" value="true" />
+      <created>1778573308936</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1778573308937</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Database and Controllers add to proyect">
+      <option name="closed" value="true" />
+      <created>1778573672686</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1778573672686</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="entities add" />
+    <MESSAGE value="Database and Controllers add to proyect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Database and Controllers add to proyect" />
   </component>
 </project>
