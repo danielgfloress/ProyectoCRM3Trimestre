@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="MembresiaRepositoryImpl add">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/service/AgendaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/service/ClaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/service/ClienteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/service/ConfiguracionGymService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/service/MembresiaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/service/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1778666010712</updated>
       <workItem from="1778666015759" duration="33000" />
-      <workItem from="1778842387455" duration="292000" />
+      <workItem from="1778842387455" duration="606000" />
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
