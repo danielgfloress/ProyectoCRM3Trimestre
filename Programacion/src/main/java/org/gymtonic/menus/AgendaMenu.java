@@ -74,6 +74,39 @@ public class AgendaMenu {
         System.out.println("Evento añadido correctamente.");
     }
 
+    private void modificarAgenda() {
+        System.out.print("ID a modificar: ");
+        long id = sc.nextLong();
+        sc.nextLine();
+        long claseId = pedirLong("Nuevo ID de clase: ", v -> {
+            if (v <= 0) throw new IllegalArgumentException("El ID de clase debe ser mayor que 0.");
+        });
+        long clienteRaw = pedirLong("Nuevo ID de cliente (0 = sin cliente): ", v -> {
+            if (v < 0) throw new IllegalArgumentException("El ID de cliente no puede ser negativo.");
+        });
+        Long clienteId = clienteRaw == 0 ? null : clienteRaw;
+        sc.nextLine();
+        String fecha = pedirCampo("Nueva fecha (YYYY-MM-DD): ", v -> {
+            try {
+                LocalDate.parse(v);
+            } catch (DateTimeParseException e) {
+                throw new IllegalArgumentException("El formato de la fecha debe ser YYYY-MM-DD.");
+            }
+        });
+        String hora = pedirCampo("Nueva hora (HH:MM): ", v -> {
+            try {
+                LocalTime.parse(v);
+            } catch (DateTimeParseException e) {
+                throw new IllegalArgumentException("El formato de la hora debe ser HH:MM.");
+            }
+        });
+        String estado = pedirCampo("Nuevo estado (reservado/cancelado): ", v -> {
+            if (!v.equalsIgnoreCase("reservado") && !v.equalsIgnoreCase("cancelado"))
+                throw new IllegalArgumentException("El estado debe ser: reservado o cancelado.");
+        });
+        System.out.println(agendaController.modifyAgenda(id, new Agenda(claseId, clienteId, fecha, hora, estado)) ? "Evento modificado." : "No encontrado.");
+    }
+
     private String pedirCampo(String etiqueta, Consumer<String> validacion) {
         while (true) {
             System.out.print(etiqueta);
