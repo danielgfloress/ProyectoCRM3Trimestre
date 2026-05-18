@@ -25,7 +25,7 @@ public class AgendaMenu {
             System.out.println("3. Añadir evento");
             System.out.println("4. Modificar evento");
             System.out.println("5. Eliminar evento");
-            System.out.println("6mm                                                                                                             . Volver");
+            System.out.println("6.Volver");
             System.out.print("Selecciona una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();
