@@ -37,6 +37,29 @@ public class AgendaMenu {
 
             switch (opcion) {
 
+                case 1:
+                    agendaController.findAll().forEach(System.out::println);
+                    break;
+                case 2:
+                    System.out.print("ID: ");
+                    System.out.println(agendaController.findById(sc.nextLong()));
+                    break;
+                case 3:
+                    agendaController.findAll().forEach(System.out::println);
+                    añadirAgenda();
+                    break;
+                case 4:
+                    agendaController.findAll().forEach(System.out::println);
+                    modificarAgenda();
+                    break;
+                case 5:
+                    eliminarAgenda();
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+
             }
 
         }while (opcion != 6) ;
