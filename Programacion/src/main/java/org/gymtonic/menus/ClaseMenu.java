@@ -87,6 +87,11 @@ public class ClaseMenu {
         System.out.println(claseController.modifyClase(id, new Clase(nombre, instructor, horario, capacidad, nivel)) ? "Clase modificada." : "No encontrada.");
     }
 
+    private void eliminarClase() {
+        System.out.print("ID a eliminar: ");
+        System.out.println(claseController.deleteClase(sc.nextLong()) ? "Clase eliminada." : "No encontrada.");
+    }
+
     private String pedirCampo(String etiqueta, Consumer<String> validacion) {
 
         while (true) {
