@@ -24,6 +24,7 @@ public class AgendaMenu {
         int opcion;
 
         do {
+
             System.out.println("\n--- AGENDA ---");
             System.out.println("1. Listar todos los eventos");
             System.out.println("2. Buscar por ID");
@@ -67,6 +68,7 @@ public class AgendaMenu {
     }
 
     private void añadirAgenda() {
+
         long claseId = pedirLong("ID de clase: ", v -> {
             if (v <= 0) throw new IllegalArgumentException("El ID de clase debe ser mayor que 0.");
         });
@@ -95,9 +97,11 @@ public class AgendaMenu {
         });
         agendaController.addAgenda(new Agenda(claseId, clienteId, fecha, hora, estado));
         System.out.println("Evento añadido correctamente.");
+
     }
 
     private void modificarAgenda() {
+
         System.out.print("ID a modificar: ");
         long id = sc.nextLong();
         sc.nextLine();
@@ -128,14 +132,18 @@ public class AgendaMenu {
                 throw new IllegalArgumentException("El estado debe ser: reservado o cancelado.");
         });
         System.out.println(agendaController.modifyAgenda(id, new Agenda(claseId, clienteId, fecha, hora, estado)) ? "Evento modificado." : "No encontrado.");
+
     }
 
     private void eliminarAgenda() {
+
         System.out.print("ID a eliminar: ");
         System.out.println(agendaController.deleteAgenda(sc.nextLong()) ? "Evento eliminado." : "No encontrado.");
+
     }
 
     private String pedirCampo(String etiqueta, Consumer<String> validacion) {
+
         while (true) {
             System.out.print(etiqueta);
             String valor = sc.nextLine();
@@ -145,11 +153,15 @@ public class AgendaMenu {
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
             }
+
         }
+
     }
 
     private long pedirLong(String etiqueta, Consumer<Long> validacion) {
+
         while (true) {
+
             System.out.print(etiqueta);
             try {
                 long valor = Long.parseLong(sc.nextLine());
@@ -161,6 +173,7 @@ public class AgendaMenu {
                 System.out.println("Error: " + e.getMessage());
             }
         }
+
     }
 
 }

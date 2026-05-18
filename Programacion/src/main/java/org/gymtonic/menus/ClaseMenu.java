@@ -1,8 +1,10 @@
 package org.gymtonic.menus;
 
 import org.gymtonic.controllers.ClaseController;
+import org.gymtonic.models.Clase;
 
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 
 public class ClaseMenu {
@@ -35,4 +37,67 @@ public class ClaseMenu {
         } while (opcion != 6);
 
     }
+
+    private void añadirClase() {
+
+        sc.nextLine();
+        String nombre = pedirCampo("Nombre: ", v -> {
+            if (v.isBlank()) throw new IllegalArgumentException("El nombre es obligatorio.");
+        });
+        String instructor = pedirCampo("Instructor: ", v -> {
+            if (v.isBlank()) throw new IllegalArgumentException("El instructor es obligatorio.");
+        });
+        String horario = pedirCampo("Horario: ", v -> {
+            if (v.isBlank()) throw new IllegalArgumentException("El horario es obligatorio.");
+        });
+        int capacidad = pedirEntero("Capacidad máxima: ", v -> {
+            if (v <= 0) throw new IllegalArgumentException("La capacidad debe ser mayor que 0.");
+            if (v > 500) throw new IllegalArgumentException("La capacidad no puede superar 500.");
+        });
+        String nivel = pedirCampo("Nivel (principiante/intermedio/avanzado): ", v -> {
+            if (!v.equalsIgnoreCase("principiante") && !v.equalsIgnoreCase("intermedio") && !v.equalsIgnoreCase("avanzado"))
+                throw new IllegalArgumentException("El nivel debe ser: principiante, intermedio o avanzado.");
+        });
+        claseController.addClase(new Clase(nombre, instructor, horario, capacidad, nivel));
+        System.out.println("Clase añadida correctamente.");
+
+    }
+
+    private String pedirCampo(String etiqueta, Consumer<String> validacion) {
+
+        while (true) {
+
+            System.out.print(etiqueta);
+            String valor = sc.nextLine();
+
+            try {
+                validacion.accept(valor);
+                return valor;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        }
+
+    }
+
+    private int pedirEntero(String etiqueta, Consumer<Integer> validacion) {
+
+        while (true) {
+
+            System.out.print(etiqueta);
+
+            try {
+                int valor = Integer.parseInt(sc.nextLine());
+                validacion.accept(valor);
+                return valor;
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Introduce un número entero válido.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+
+    }
+
 }
