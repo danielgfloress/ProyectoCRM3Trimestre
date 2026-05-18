@@ -107,6 +107,11 @@ public class AgendaMenu {
         System.out.println(agendaController.modifyAgenda(id, new Agenda(claseId, clienteId, fecha, hora, estado)) ? "Evento modificado." : "No encontrado.");
     }
 
+    private void eliminarAgenda() {
+        System.out.print("ID a eliminar: ");
+        System.out.println(agendaController.deleteAgenda(sc.nextLong()) ? "Evento eliminado." : "No encontrado.");
+    }
+
     private String pedirCampo(String etiqueta, Consumer<String> validacion) {
         while (true) {
             System.out.print(etiqueta);
