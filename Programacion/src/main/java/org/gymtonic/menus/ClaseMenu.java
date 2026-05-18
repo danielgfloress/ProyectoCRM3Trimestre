@@ -63,6 +63,30 @@ public class ClaseMenu {
 
     }
 
+    private void modificarClase() {
+        System.out.print("ID a modificar: ");
+        long id = sc.nextLong();
+        sc.nextLine();
+        String nombre = pedirCampo("Nuevo nombre: ", v -> {
+            if (v.isBlank()) throw new IllegalArgumentException("El nombre es obligatorio.");
+        });
+        String instructor = pedirCampo("Nuevo instructor: ", v -> {
+            if (v.isBlank()) throw new IllegalArgumentException("El instructor es obligatorio.");
+        });
+        String horario = pedirCampo("Nuevo horario: ", v -> {
+            if (v.isBlank()) throw new IllegalArgumentException("El horario es obligatorio.");
+        });
+        int capacidad = pedirEntero("Nueva capacidad máxima: ", v -> {
+            if (v <= 0) throw new IllegalArgumentException("La capacidad debe ser mayor que 0.");
+            if (v > 500) throw new IllegalArgumentException("La capacidad no puede superar 500.");
+        });
+        String nivel = pedirCampo("Nuevo nivel (principiante/intermedio/avanzado): ", v -> {
+            if (!v.equalsIgnoreCase("principiante") && !v.equalsIgnoreCase("intermedio") && !v.equalsIgnoreCase("avanzado"))
+                throw new IllegalArgumentException("El nivel debe ser: principiante, intermedio o avanzado.");
+        });
+        System.out.println(claseController.modifyClase(id, new Clase(nombre, instructor, horario, capacidad, nivel)) ? "Clase modificada." : "No encontrada.");
+    }
+
     private String pedirCampo(String etiqueta, Consumer<String> validacion) {
 
         while (true) {
