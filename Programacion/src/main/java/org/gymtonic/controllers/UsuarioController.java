@@ -1,4 +1,4 @@
-package org.gymtonic.contorollers;
+package org.gymtonic.controllers;
 
 public class UsuarioController {
 }

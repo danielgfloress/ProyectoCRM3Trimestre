@@ -1,4 +1,4 @@
-package org.gymtonic.contorollers;
+package org.gymtonic.controllers;
 
 import org.gymtonic.models.Clase;
 import org.gymtonic.service.ClaseService;

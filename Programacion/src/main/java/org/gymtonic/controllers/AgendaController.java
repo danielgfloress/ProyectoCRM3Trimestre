@@ -1,4 +1,4 @@
-package org.gymtonic.contorollers;
+package org.gymtonic.controllers;
 
 import org.gymtonic.models.Agenda;
 import org.gymtonic.service.AgendaService;
