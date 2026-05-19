@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymTonic - Configuración</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="app">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__header">
+                <h1 class="sidebar__title">Gym<span class="sidebar__title--highlight">Tonic</span></h1>
+            </div>
+            <nav class="sidebar__nav">
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="../index.html" class="sidebar__link">
+                            <i class="fas fa-home sidebar__icon"></i><span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="clientes.html" class="sidebar__link">
+                            <i class="fas fa-users sidebar__icon"></i><span>Clientes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="clases.html" class="sidebar__link">
+                            <i class="fas fa-dumbbell sidebar__icon"></i><span>Clases</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="agenda.html" class="sidebar__link">
+                            <i class="fas fa-calendar-alt sidebar__icon"></i><span>Agenda</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="usuarios.html" class="sidebar__link">
+                            <i class="fas fa-user-shield sidebar__icon"></i><span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="configuracion.html" class="sidebar__link sidebar__link--active">
+                            <i class="fas fa-cog sidebar__icon"></i><span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main" id="main">
+
+            <header class="header" id="header">
+                <div class="header__left">
+                    <button type="button" class="header__menu-btn" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 class="header__title">Configuración</h2>
+                </div>
+                <div class="header__right">
+                    <button type="button" class="header__notification"><i class="fas fa-bell"></i></button>
+                    <div class="header__user">
+                        <div class="header__avatar"><i class="fas fa-user"></i></div>
+                        <span class="header__username">Admin</span>
+                    </div>
+                </div>
+            </header>
+            <form action="" method="" class="content">
+
+                <div class="actions">
+                    <div></div>
+                    <button type="button" class="btn btn--primary" id="saveConfigBtn">
+                        <i class="fas fa-save btn__icon"></i>Guardar Cambios
+                    </button>
+                </div>
+
+                <div class="config-section">
+                    <div class="config-section__header">
+                        <div class="config-section__icon"><i class="fas fa-building"></i></div>
+                        <h3 class="config-section__title">Perfil del Gimnasio</h3>
+                    </div>
+                    <div class="config-section__body">
+                        <div class="config-two-col">
+                            <div class="form__group">
+                                <label class="form__label" for="gymNombre">Nombre del gimnasio</label>
+                                <input type="text" id="gymNombre" class="form__control" value="GymTonic">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="gymEmail">Email de contacto</label>
+                                <input type="email" id="gymEmail" class="form__control" value="info@gymtonic.com">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="gymTelefono">Teléfono</label>
+                                <input type="text" id="gymTelefono" class="form__control" value="621 003 320">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="gymDireccion">Dirección</label>
+                                <input type="text" id="gymDireccion" class="form__control" value="Calle Tridente 67, Alicante">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <div class="config-section__header">
+                        <div class="config-section__icon"><i class="fas fa-clock"></i></div>
+                        <h3 class="config-section__title">Horario de Apertura</h3>
+                    </div>
+                    <div class="config-section__body">
+                        <div class="config-two-col">
+                            <div class="form__group">
+                                <label class="form__label">Apertura (L–V)</label>
+                                <input type="time" id="horarioLVAbre" class="form__control" value="07:00">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label">Cierre (L–V)</label>
+                                <input type="time" id="horarioLVCierra" class="form__control" value="22:00">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label">Apertura (Sáb)</label>
+                                <input type="time" id="horarioSabAbre" class="form__control" value="09:00">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label">Cierre (Sáb)</label>
+                                <input type="time" id="horarioSabCierra" class="form__control" value="20:00">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <div class="config-section__header">
+                        <div class="config-section__icon"><i class="fas fa-id-card"></i></div>
+                        <h3 class="config-section__title">Tipos de Membresía</h3>
+                    </div>
+                    <div class="config-section__body">
+                        <div class="table-container" style="box-shadow: none; border-radius: var(--radius-md);">
+                            <table class="table" style="min-width: 400px;">
+                                <thead class="table__header">
+                                    <tr>
+                                        <th class="table__th">Nombre</th>
+                                        <th class="table__th">Precio / mes</th>
+                                        <th class="table__th">Duración</th>
+                                        <th class="table__th">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="membresiasTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="margin-top: 16px;">
+                            <button type="button" class="btn btn--secondary" id="addMembresiaBtn">
+                                <i class="fas fa-plus btn__icon"></i>Añadir tipo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <div class="config-section__header">
+                        <div class="config-section__icon"><i class="fas fa-user-shield"></i></div>
+                        <h3 class="config-section__title">Cuenta de Administrador</h3>
+                    </div>
+                    <div class="config-section__body">
+                        <div class="config-two-col">
+                            <div class="form__group">
+                                <label class="form__label" for="adminNombre">Nombre</label>
+                                <input type="text" id="adminNombre" class="form__control" value="Admin">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="adminEmail">Email</label>
+                                <input type="email" id="adminEmail" class="form__control" value="admin@gymtonic.com">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="adminPass">Nueva contraseña</label>
+                                <input type="password" id="adminPass" class="form__control" placeholder="Dejar vacío para no cambiar">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="adminPassConfirm">Confirmar contraseña</label>
+                                <input type="password" id="adminPassConfirm" class="form__control" placeholder="Repetir nueva contraseña">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </main>
+    </div>
+
+    <div class="modal" id="membresiaModal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3 class="modal__title" id="modalTitle">Nuevo Tipo de Membresía</h3>
+                <button type="button" class="modal__close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal__body">
+                <form id="membresiaForm">
+                    <input type="hidden" id="membresiaId">
+                    <div class="form__group">
+                        <label class="form__label" for="nombre">Nombre de la membresía</label>
+                        <input type="text" id="nombre" class="form__control" placeholder="Ej: Premium" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="precio">Precio</label>
+                        <input type="text" id="precio" class="form__control" placeholder="Ej: €40" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="duracion">Duración</label>
+                        <input type="text" id="duracion" class="form__control" placeholder="Ej: 1 mes" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal__footer">
+                <button type="button" class="btn btn--secondary" id="cancelModalBtn">Cancelar</button>
+                <button type="button" class="btn btn--primary" id="saveMembresiaBtn">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/configuracion.js"></script>
+    <script src="../js/menu.js"></script>
+</body>
+
+</html>
