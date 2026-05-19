@@ -1,32 +1,38 @@
 :root {
-    --color-primary: #1f1f1f;
-    --color-primary-light: #2f2f2f;
-    --color-primary-dark: #111111;
-    --color-secondary: #facc15;
-    --color-secondary-light: #fde047;
-    --color-secondary-dark: #eab308;
-    --color-success: #22c55e;
-    --color-warning: #f59e0b;
-    --color-danger: #ef4444;
-    --color-white: #ffffff;
-    --color-gray-50: #fafafa;
-    --color-gray-100: #f5f5f5;
-    --color-gray-200: #e5e5e5;
-    --color-gray-300: #d4d4d4;
-    --color-gray-400: #a3a3a3;
-    --color-gray-500: #737373;
-    --color-gray-600: #525252;
-    --color-gray-700: #404040;
-    --color-gray-800: #262626;
-    --color-gray-900: #171717;
-    --bg-body: #f5f5f5;
-    --bg-sidebar: #1f1f1f;
-    --bg-card: #ffffff;
-    --bg-header: #ffffff;
-    --text-primary: #171717;
-    --text-secondary: #525252;
-    --text-light: #737373;
-    --text-white: #ffffff;
+    --color-primary: rgb(31, 31, 31);
+    --color-primary-light: rgb(47, 47, 47);
+    --color-primary-dark: rgb(17, 17, 17);
+
+    --color-secondary: rgb(250, 204, 21);
+    --color-secondary-light: rgb(253, 224, 71);
+    --color-secondary-dark: rgb(234, 179, 8);
+
+    --color-success: rgb(34, 197, 94);
+    --color-warning: rgb(245, 158, 11);
+    --color-danger: rgb(239, 68, 68);
+
+    --color-white: rgb(255, 255, 255);
+
+    --color-gray-50: rgb(250, 250, 250);
+    --color-gray-100: rgb(245, 245, 245);
+    --color-gray-200: rgb(229, 229, 229);
+    --color-gray-300: rgb(212, 212, 212);
+    --color-gray-400: rgb(163, 163, 163);
+    --color-gray-500: rgb(115, 115, 115);
+    --color-gray-600: rgb(82, 82, 82);
+    --color-gray-700: rgb(64, 64, 64);
+    --color-gray-800: rgb(38, 38, 38);
+    --color-gray-900: rgb(23, 23, 23);
+
+    --bg-body: rgb(245, 245, 245);
+    --bg-sidebar: rgb(31, 31, 31);
+    --bg-card: rgb(255, 255, 255);
+    --bg-header: rgb(255, 255, 255);
+
+    --text-primary: rgb(23, 23, 23);
+    --text-secondary: rgb(82, 82, 82);
+    --text-light: rgb(115, 115, 115);
+    --text-white: rgb(255, 255, 255);
     --sidebar-width: 270px;
     --sidebar-collapse-width: 90px;
     --header-height: 70px;
@@ -427,4 +433,37 @@ body {
 .table__email {
     font-size: 13px;
     color: var(--text-light);
+}
+.table__actions {
+    display: flex;
+    gap: 8px;
+}
+
+.table__btn {
+    border: none;
+    cursor: pointer;
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.table__btn--edit {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.table__btn--edit:hover {
+    background: var(--color-secondary-dark);
+}
+
+.table__btn--delete {
+    background: var(--color-gray-100);
+    color: var(--color-danger);
+}
+
+.table__btn--delete:hover {
+    background: var(--color-danger);
+    color: var(--color-white);
 }
