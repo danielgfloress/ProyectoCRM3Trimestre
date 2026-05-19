@@ -434,36 +434,23 @@ body {
     font-size: 13px;
     color: var(--text-light);
 }
+/* TABLE ACTIONS */
 .table__actions {
     display: flex;
-    gap: 8px;
+    gap: 12px;
 }
 
 .table__btn {
     border: none;
+    background: transparent;
     cursor: pointer;
-    padding: 7px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    font-weight: 600;
-    transition: var(--transition);
+    font-weight: 700;
 }
 
 .table__btn--edit {
-    background: var(--color-secondary);
-    color: var(--color-primary);
-}
-
-.table__btn--edit:hover {
-    background: var(--color-secondary-dark);
+    color: #ca8a04;
 }
 
 .table__btn--delete {
-    background: var(--color-gray-100);
-    color: var(--color-danger);
-}
-
-.table__btn--delete:hover {
-    background: var(--color-danger);
-    color: var(--color-white);
+    color: #dc2626;
 }
