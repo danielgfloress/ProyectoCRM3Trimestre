@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymTonic - Clases</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__header">
+                <h1 class="sidebar__title">Gym<span class="sidebar__title--highlight">Tonic</span></h1>
+            </div>
+            <nav class="sidebar__nav">
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="../index.html" class="sidebar__link">
+                            <i class="fas fa-home sidebar__icon"></i><span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="clientes.html" class="sidebar__link">
+                            <i class="fas fa-users sidebar__icon"></i><span>Clientes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="instructores.html" class="sidebar__link sidebar__link">
+                            <i class="fas fa-chalkboard-teacher sidebar__icon"></i><span>Instructores</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="clases.html" class="sidebar__link sidebar__link--active">
+                            <i class="fas fa-dumbbell sidebar__icon"></i><span>Clases</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="agenda.html" class="sidebar__link">
+                            <i class="fas fa-calendar-alt sidebar__icon"></i><span>Agenda</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sidebar__item">
+                        <a href="usuarios.html" class="sidebar__link">
+                            <i class="fas fa-user-shield sidebar__icon"></i><span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="configuracion.html" class="sidebar__link">
+                            <i class="fas fa-cog sidebar__icon"></i><span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main" id="main">
+
+            <!-- HEADER -->
+            <header class="header" id="header">
+                <div class="header__left">
+                    <button class="header__menu-btn" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 class="header__title">Clases</h2>
+                </div>
+                <div class="header__right">
+                    <button class="header__notification"><i class="fas fa-bell"></i></button>
+                    <div class="header__user">
+                        <div class="header__avatar"><i class="fas fa-user"></i></div>
+                        <span class="header__username">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="actions">
+                    <div class="search">
+                        <i class="fas fa-search search__icon"></i>
+                        <input type="text" class="search__input" placeholder="Buscar clase...">
+                    </div>
+                    <button class="btn btn--primary" id="addClaseBtn">
+                        <i class="fas fa-plus btn__icon"></i>Nueva Clase
+                    </button>
+                </div>
+
+                <!-- CARDS -->
+                <div class="cards">
+                    <div class="card">
+                        <h3 class="card__title">Clases Activas</h3>
+                        <p class="card__value">12</p>
+                        <div class="card__footer">En el catálogo</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Instructores</h3>
+                        <p class="card__value">6</p>
+                        <div class="card__footer card__footer--success">Todos disponibles</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Plazas Ocupadas</h3>
+                        <p class="card__value">78%</p>
+                        <div class="card__footer card__footer--success">Media esta semana</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Clases Hoy</h3>
+                        <p class="card__value">8</p>
+                        <div class="card__footer card__footer--warning">2 con lista de espera</div>
+                    </div>
+                </div>
+
+                <!-- TABLE -->
+                <div class="table-container">
+                    <table class="table">
+                        <thead class="table__header">
+                            <tr>
+                                <th class="table__th">Clase</th>
+                                <th class="table__th">Instructor</th>
+                                <th class="table__th">Horario</th>
+                                <th class="table__th">Capacidad</th>
+                                <th class="table__th">Nivel</th>
+                                <th class="table__th">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clasesTableBody">
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar"><i class="fas fa-bicycle"></i></div>
+                                        <div>
+                                            <div class="table__name">Spinning</div>
+                                            <div class="table__email">Cardio intensivo</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Carlos Ruiz</td>
+                                <td class="table__td">Lun · Mié · Vie — 09:00</td>
+                                <td class="table__td">20 / 20</td>
+                                <td class="table__td"><span class="badge badge--danger">Avanzado</span></td>
+                                <td class="table__td">
+                                    <div class="table__actions">
+                                        <button class="table__btn table__btn--edit">Editar</button>
+                                        <button class="table__btn table__btn--delete">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar"><i class="fas fa-spa"></i></div>
+                                        <div>
+                                            <div class="table__name">Yoga</div>
+                                            <div class="table__email">Flexibilidad y relajación</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Sofía Mendez</td>
+                                <td class="table__td">Mar · Jue — 10:30</td>
+                                <td class="table__td">15 / 20</td>
+                                <td class="table__td"><span class="badge badge--success">Principiante</span></td>
+                                <td class="table__td">
+                                    <div class="table__actions">
+                                        <button class="table__btn table__btn--edit">Editar</button>
+                                        <button class="table__btn table__btn--delete">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar"><i class="fas fa-running"></i></div>
+                                        <div>
+                                            <div class="table__name">Pilates</div>
+                                            <div class="table__email">Fuerza y postura</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Laura Vega</td>
+                                <td class="table__td">Lun · Mié — 12:00</td>
+                                <td class="table__td">12 / 15</td>
+                                <td class="table__td"><span class="badge badge--primary">Intermedio</span></td>
+                                <td class="table__td">
+                                    <div class="table__actions">
+                                        <button class="table__btn table__btn--edit">Editar</button>
+                                        <button class="table__btn table__btn--delete">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar"><i class="fas fa-fist-raised"></i></div>
+                                        <div>
+                                            <div class="table__name">Boxeo</div>
+                                            <div class="table__email">Cardio y técnica</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Miguel Torres</td>
+                                <td class="table__td">Mar · Jue — 19:00</td>
+                                <td class="table__td">10 / 18</td>
+                                <td class="table__td"><span class="badge badge--warning">Intermedio</span></td>
+                                <td class="table__td">
+                                    <div class="table__actions">
+                                        <button class="table__btn table__btn--edit">Editar</button>
+                                        <button class="table__btn table__btn--delete">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar"><i class="fas fa-dumbbell"></i></div>
+                                        <div>
+                                            <div class="table__name">Musculación Guiada</div>
+                                            <div class="table__email">Fuerza con instructor</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Roberto Díaz</td>
+                                <td class="table__td">Lun a Vie — 18:00</td>
+                                <td class="table__td">8 / 10</td>
+                                <td class="table__td"><span class="badge badge--danger">Avanzado</span></td>
+                                <td class="table__td">
+                                    <div class="table__actions">
+                                        <button class="table__btn table__btn--edit">Editar</button>
+                                        <button class="table__btn table__btn--delete">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table__td">
+                                    <div class="table__user">
+                                        <div class="table__avatar"><i class="fas fa-music"></i></div>
+                                        <div>
+                                            <div class="table__name">Zumba</div>
+                                            <div class="table__email">Baile y cardio</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="table__td">Ana Flores</td>
+                                <td class="table__td">Mié · Vie — 20:00</td>
+                                <td class="table__td">18 / 25</td>
+                                <td class="table__td"><span class="badge badge--success">Principiante</span></td>
+                                <td class="table__td">
+                                    <div class="table__actions">
+                                        <button class="table__btn table__btn--edit">Editar</button>
+                                        <button class="table__btn table__btn--delete">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL NUEVA CLASE -->
+    <div class="modal" id="claseModal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3 class="modal__title" id="claseModalTitle">Nueva Clase</h3>
+                <button class="modal__close" id="closeClaseModalBtn">&times;</button>
+            </div>
+            <div class="modal__body">
+                <form id="claseForm">
+                    <div class="form__group">
+                        <label class="form__label" for="nombreClase">Nombre de la clase</label>
+                        <input type="text" id="nombreClase" class="form__control" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="instructor">Instructor</label>
+                        <input type="text" id="instructor" class="form__control" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="horario">Horario</label>
+                        <input type="text" id="horario" class="form__control" placeholder="Ej: Lun · Mié — 09:00" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="capacidad">Capacidad máxima</label>
+                        <input type="number" id="capacidad" class="form__control" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="nivel">Nivel</label>
+                        <select id="nivel" class="form__control">
+                            <option value="principiante">Principiante</option>
+                            <option value="intermedio">Intermedio</option>
+                            <option value="avanzado">Avanzado</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" id="cancelClaseModalBtn">Cancelar</button>
+                <button class="btn btn--primary" id="saveClaseBtn">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/crud-clases.js"></script>
+    <script src="../js/menu.js"></script>
+</body>
+
+</html>
