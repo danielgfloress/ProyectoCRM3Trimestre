@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymTonic - Agenda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__header">
+                <h1 class="sidebar__title">Gym<span class="sidebar__title--highlight">Tonic</span></h1>
+            </div>
+            <nav class="sidebar__nav">
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="../index.html" class="sidebar__link">
+                            <i class="fas fa-home sidebar__icon"></i><span>Inicio</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="clientes.html" class="sidebar__link">
+                            <i class="fas fa-users sidebar__icon"></i><span>Clientes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="clases.html" class="sidebar__link">
+                            <i class="fas fa-dumbbell sidebar__icon"></i><span>Clases</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="agenda.html" class="sidebar__link sidebar__link--active">
+                            <i class="fas fa-calendar-alt sidebar__icon"></i><span>Agenda</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sidebar__item">
+                        <a href="usuarios.html" class="sidebar__link">
+                            <i class="fas fa-user-shield sidebar__icon"></i><span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="configuracion.html" class="sidebar__link">
+                            <i class="fas fa-cog sidebar__icon"></i><span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main" id="main">
+
+            <!-- HEADER -->
+            <header class="header" id="header">
+                <div class="header__left">
+                    <button class="header__menu-btn" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 class="header__title">Agenda</h2>
+                </div>
+                <div class="header__right">
+                    <button class="header__notification"><i class="fas fa-bell"></i></button>
+                    <div class="header__user">
+                        <div class="header__avatar"><i class="fas fa-user"></i></div>
+                        <span class="header__username">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="actions">
+                    <div class="search">
+                        <i class="fas fa-search search__icon"></i>
+                        <input type="text" class="search__input" placeholder="Buscar evento...">
+                    </div>
+                    <button class="btn btn--primary" id="addEventoBtn">
+                        <i class="fas fa-plus btn__icon"></i>Nuevo Evento
+                    </button>
+                </div>
+
+                <!-- CARDS -->
+                <div class="cards">
+                    <div class="card">
+                        <h3 class="card__title">Eventos esta semana</h3>
+                        <p class="card__value">34</p>
+                        <div class="card__footer">Clases y reservas</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Reservas activas</h3>
+                        <p class="card__value">87</p>
+                        <div class="card__footer card__footer--success">+11% vs semana anterior</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Cancelaciones</h3>
+                        <p class="card__value">3</p>
+                        <div class="card__footer card__footer--warning">Esta semana</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Lista de espera</h3>
+                        <p class="card__value">5</p>
+                        <div class="card__footer">Personas en espera</div>
+                    </div>
+                </div>
+
+                <!-- SEMANA ACTUAL -->
+                <div class="agenda-grid" id="agendaGrid">
+                    <div class="agenda-day" data-dia="lun">
+                        <div class="agenda-day__header">
+                            <div class="agenda-day__name">Lun</div>
+                            <div class="agenda-day__num">—</div>
+                        </div>
+                        <div class="agenda-day__body"></div>
+                    </div>
+                    <div class="agenda-day" data-dia="mar">
+                        <div class="agenda-day__header">
+                            <div class="agenda-day__name">Mar</div>
+                            <div class="agenda-day__num">—</div>
+                        </div>
+                        <div class="agenda-day__body"></div>
+                    </div>
+                    <div class="agenda-day" data-dia="mie">
+                        <div class="agenda-day__header">
+                            <div class="agenda-day__name">Mié</div>
+                            <div class="agenda-day__num">—</div>
+                        </div>
+                        <div class="agenda-day__body"></div>
+                    </div>
+                    <div class="agenda-day" data-dia="jue">
+                        <div class="agenda-day__header">
+                            <div class="agenda-day__name">Jue</div>
+                            <div class="agenda-day__num">—</div>
+                        </div>
+                        <div class="agenda-day__body"></div>
+                    </div>
+                    <div class="agenda-day" data-dia="vie">
+                        <div class="agenda-day__header">
+                            <div class="agenda-day__name">Vie</div>
+                            <div class="agenda-day__num">—</div>
+                        </div>
+                        <div class="agenda-day__body"></div>
+                    </div>
+                    <div class="agenda-day" data-dia="sab">
+                        <div class="agenda-day__header">
+                            <div class="agenda-day__name">Sáb</div>
+                            <div class="agenda-day__num">—</div>
+                        </div>
+                        <div class="agenda-day__body"></div>
+                    </div>
+                    <div class="agenda-day" data-dia="dom">
+                        <div class="agenda-day__header">
+                            <div class="agenda-day__name">Dom</div>
+                            <div class="agenda-day__num">—</div>
+                        </div>
+                        <div class="agenda-day__body"></div>
+                    </div>
+                </div>
+
+                <!-- PRÓXIMAS RESERVAS -->
+                <div class="table-container">
+                    <table class="table">
+                        <thead class="table__header">
+                            <tr>
+                                <th class="table__th">Cliente</th>
+                                <th class="table__th">Clase</th>
+                                <th class="table__th">Fecha</th>
+                                <th class="table__th">Hora</th>
+                                <th class="table__th">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="agendaTableBody">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL NUEVO EVENTO -->
+    <div class="modal" id="eventoModal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3 class="modal__title">Nuevo Evento</h3>
+                <button class="modal__close" id="closeEventoModalBtn">&times;</button>
+            </div>
+            <div class="modal__body">
+                <form id="eventoForm">
+                    <div class="form__group">
+                        <label class="form__label" for="eventoClase">Clase</label>
+                        <select id="eventoClase" class="form__control">
+                            <option>Spinning</option>
+                            <option>Yoga</option>
+                            <option>Pilates</option>
+                            <option>Boxeo</option>
+                            <option>Musculación Guiada</option>
+                            <option>Zumba</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="eventoFecha">Fecha</label>
+                        <input type="date" id="eventoFecha" class="form__control" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="eventoHora">Hora</label>
+                        <input type="time" id="eventoHora" class="form__control" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="eventoCliente">Cliente (opcional)</label>
+                        <input type="text" id="eventoCliente" class="form__control" placeholder="Nombre del cliente">
+                    </div>
+                </form>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary" id="cancelEventoModalBtn">Cancelar</button>
+                <button class="btn btn--primary" id="saveEventoBtn">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/crud-agenda.js"></script>
+    <script src="../js/menu.js"></script>
+</body>
+
+</html>
