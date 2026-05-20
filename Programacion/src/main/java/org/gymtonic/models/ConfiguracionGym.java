@@ -15,11 +15,7 @@ public class ConfiguracionGym {
 
     public ConfiguracionGym() {}
 
-    public ConfiguracionGym(String gymNombre, String gymEmail, String gymTelefono, String gymDireccion,
-                            String horarioLvAbre, String horarioLvCierra,
-                            String horarioSabAbre, String horarioSabCierra,
-                            Long usuarioId) {
-        this.gymNombre = gymNombre;
+    public ConfiguracionGym(String gymEmail, String gymTelefono, String gymDireccion, String horarioLvAbre, String horarioLvCierra, String horarioSabAbre, String horarioSabCierra, Long usuarioId) {
         this.gymEmail = gymEmail;
         this.gymTelefono = gymTelefono;
         this.gymDireccion = gymDireccion;
