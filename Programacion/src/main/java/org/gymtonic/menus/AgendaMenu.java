@@ -1,6 +1,7 @@
 package org.gymtonic.menus;
 
 import org.gymtonic.controllers.AgendaController;
+import org.gymtonic.controllers.ClaseController;
 import org.gymtonic.models.Agenda;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ public class AgendaMenu {
 
     private final Scanner sc;
     private final AgendaController agendaController = new AgendaController();
+    private final ClaseController claseController = new ClaseController();
 
     public AgendaMenu(Scanner sc) {
         this.sc = sc;
@@ -46,7 +48,6 @@ public class AgendaMenu {
                     System.out.println(agendaController.findById(sc.nextLong()));
                     break;
                 case 3:
-                    agendaController.findAll().forEach(System.out::println);
                     añadirAgenda();
                     break;
                 case 4:
@@ -54,6 +55,7 @@ public class AgendaMenu {
                     modificarAgenda();
                     break;
                 case 5:
+                    agendaController.findAll().forEach(System.out::println);
                     eliminarAgenda();
                     break;
                 case 6:
@@ -69,8 +71,13 @@ public class AgendaMenu {
 
     private void añadirAgenda() {
 
+        System.out.println("\n-- Clases disponibles --");
+        claseController.findAll().forEach(System.out::println);
+
         long claseId = pedirLong("ID de clase: ", v -> {
             if (v <= 0) throw new IllegalArgumentException("El ID de clase debe ser mayor que 0.");
+            if (claseController.findById(v) == null)
+                throw new IllegalArgumentException("No existe ninguna clase con ese ID.");
         });
         long clienteRaw = pedirLong("ID de cliente (0 = sin cliente): ", v -> {
             if (v < 0) throw new IllegalArgumentException("El ID de cliente no puede ser negativo.");
@@ -107,6 +114,8 @@ public class AgendaMenu {
         sc.nextLine();
         long claseId = pedirLong("Nuevo ID de clase: ", v -> {
             if (v <= 0) throw new IllegalArgumentException("El ID de clase debe ser mayor que 0.");
+            if (claseController.findById(v) == null)
+                throw new IllegalArgumentException("No existe ninguna clase con ese ID.");
         });
         long clienteRaw = pedirLong("Nuevo ID de cliente (0 = sin cliente): ", v -> {
             if (v < 0) throw new IllegalArgumentException("El ID de cliente no puede ser negativo.");
