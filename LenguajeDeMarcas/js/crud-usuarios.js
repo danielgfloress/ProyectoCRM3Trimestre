@@ -7,27 +7,36 @@ const closeModalBtn     = document.getElementById('closeModalBtn');
 const cancelModalBtn    = document.getElementById('cancelModalBtn');
 
 class Usuario {
-    constructor(id, nombre, email, password, tipo) {
+    constructor(id, nombre, email, password, tipo, estado) {
         this.id       = id;
         this.nombre   = nombre;
         this.email    = email;
         this.password = password;
         this.tipo     = tipo   || 'cliente';
+        this.estado   = estado || 'activo';
     }
 }
 
 let usuarios = JSON.parse(sessionStorage.getItem('gymUsuarios')) || [
-    new Usuario(1, 'Ana Martínez',   'ana@gymtonic.com',    'Admin1234', 'administrador'),
-    new Usuario(2, 'Carlos Ruiz',    'carlos@gymtonic.com', 'Instr5678', 'instructor'),
-    new Usuario(3, 'Laura Vega',     'laura@gymtonic.com',  'Instr9012', 'instructor'),
-    new Usuario(4, 'Juan Pérez',     'juan@xtart.com',      'Juan3456',  'cliente'),
-    new Usuario(5, 'María García',   'maria@xtart.com',     'Mari7890',  'cliente'),
+    { id: 1, nombre: 'Ana Martínez', email: 'ana@gymtonic.com',    password: 'Admin1234!', tipo: 'administrador', estado: 'activo'   },
+    { id: 2, nombre: 'Carlos Ruiz',  email: 'carlos@gymtonic.com', password: 'Instr5678!', tipo: 'instructor',    estado: 'activo',   instructorId: 1 },
+    { id: 3, nombre: 'Laura Vega',   email: 'laura@gymtonic.com',  password: 'Instr9012!', tipo: 'instructor',    estado: 'activo',   instructorId: 2 },
+    { id: 4, nombre: 'Juan Pérez',   email: 'juan@xtart.com',      password: 'Juan3456!',  tipo: 'cliente',       estado: 'activo',   clienteId: 1    },
+    { id: 5, nombre: 'María García', email: 'maria@xtart.com',     password: 'Mari7890!',  tipo: 'cliente',       estado: 'inactivo', clienteId: 2    },
 ];
 
 let editingUsuarioId = null;
 
 function getInitials(name) {
     return name.split(' ').map(part => part[0]).join('').toUpperCase().slice(0, 2);
+}
+
+function getEstadoBadge(estado) {
+    switch (estado) {
+        case 'activo':   return { cls: 'badge--success', txt: 'Activo'   };
+        case 'inactivo': return { cls: 'badge--danger',  txt: 'Inactivo' };
+        default:         return { cls: 'badge--primary', txt: estado      };
+    }
 }
 
 function getTipoBadge(tipo) {
@@ -39,21 +48,60 @@ function getTipoBadge(tipo) {
     }
 }
 
+function syncUsuarioToEntidad(usuario, password) {
+    if (usuario.tipo === 'cliente' && usuario.clienteId) {
+        let clientes = JSON.parse(sessionStorage.getItem('gymClients')) || [];
+        const idx = clientes.findIndex(c => c.id === usuario.clienteId);
+        if (idx !== -1) {
+            clientes[idx].nombre = usuario.nombre;
+            clientes[idx].email  = usuario.email;
+            clientes[idx].estado = usuario.estado;
+            sessionStorage.setItem('gymClients', JSON.stringify(clientes));
+        }
+    }
+
+    if (usuario.tipo === 'instructor' && usuario.instructorId) {
+        let instructores = JSON.parse(sessionStorage.getItem('gymInstructores')) || [];
+        const idx = instructores.findIndex(i => i.id === usuario.instructorId);
+        if (idx !== -1) {
+            instructores[idx].nombre = usuario.nombre;
+            instructores[idx].email  = usuario.email;
+            instructores[idx].estado = usuario.estado;
+            sessionStorage.setItem('gymInstructores', JSON.stringify(instructores));
+        }
+    }
+}
+
+function deleteEntidadDeUsuario(usuario) {
+    if (usuario.tipo === 'cliente' && usuario.clienteId) {
+        let clientes = JSON.parse(sessionStorage.getItem('gymClients')) || [];
+        clientes = clientes.filter(c => c.id !== usuario.clienteId);
+        sessionStorage.setItem('gymClients', JSON.stringify(clientes));
+    }
+    if (usuario.tipo === 'instructor' && usuario.instructorId) {
+        let instructores = JSON.parse(sessionStorage.getItem('gymInstructores')) || [];
+        instructores = instructores.filter(i => i.id !== usuario.instructorId);
+        sessionStorage.setItem('gymInstructores', JSON.stringify(instructores));
+    }
+}
+
 function updateCards() {
     const cardTotal        = document.getElementById('cardTotal');
     const cardAdmins       = document.getElementById('cardAdmins');
     const cardInstructores = document.getElementById('cardInstructores');
     const cardActivos      = document.getElementById('cardActivos');
-    if (!cardTotal) return; // por si se reutiliza el JS en otro contexto
+    if (!cardTotal) return;
     cardTotal.textContent        = usuarios.length;
     cardAdmins.textContent       = usuarios.filter(u => u.tipo === 'administrador').length;
     cardInstructores.textContent = usuarios.filter(u => u.tipo === 'instructor').length;
+    cardActivos.textContent      = usuarios.filter(u => u.estado === 'activo').length;
 }
 
 function loadUsuarios() {
     usuariosTableBody.innerHTML = '';
 
     usuarios.forEach(function(usuario) {
+        const estadoBadge = getEstadoBadge(usuario.estado);
         const tipoBadge   = getTipoBadge(usuario.tipo);
 
         const row = document.createElement('tr');
@@ -69,6 +117,9 @@ function loadUsuarios() {
             </td>
             <td class="table__td">
                 <span class="badge ${tipoBadge.cls}">${tipoBadge.txt}</span>
+            </td>
+            <td class="table__td">
+                <span class="badge ${estadoBadge.cls}">${estadoBadge.txt}</span>
             </td>
             <td class="table__td">
                 <div class="table__actions">
@@ -103,6 +154,7 @@ function editUsuario(id) {
         document.getElementById('email').value     = usuario.email;
         document.getElementById('password').value  = '';
         document.getElementById('tipo').value      = usuario.tipo;
+        document.getElementById('estado').value    = usuario.estado;
         document.getElementById('password').required = false;
         document.getElementById('passwordHelp').style.display = 'block';
         modalTitle.textContent = 'Editar Usuario';
@@ -112,6 +164,8 @@ function editUsuario(id) {
 
 function deleteUsuario(id) {
     if (confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
+        const usuario = usuarios.find(u => u.id === id);
+        if (usuario) deleteEntidadDeUsuario(usuario);
         usuarios = usuarios.filter(u => u.id !== id);
         loadUsuarios();
     }
@@ -125,13 +179,13 @@ function saveUsuario(e) {
     const email    = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     const tipo     = document.getElementById('tipo').value;
+    const estado   = document.getElementById('estado').value;
 
     if (!nombre || !email) {
         alert('El nombre y el email son obligatorios.');
         return;
     }
 
-    
     const emailDuplicado = usuarios.some(u =>
         u.email.toLowerCase() === email.toLowerCase() && u.id !== parseInt(id)
     );
@@ -141,7 +195,6 @@ function saveUsuario(e) {
     }
 
     if (id) {
-        
         const index = usuarios.findIndex(u => u.id === parseInt(id));
         if (index !== -1) {
             usuarios[index] = {
@@ -149,17 +202,18 @@ function saveUsuario(e) {
                 nombre,
                 email,
                 tipo,
-                // Solo actualiza la contraseña si se ha introducido una nueva
+                estado,
                 ...(password ? { password } : {})
             };
+            syncUsuarioToEntidad(usuarios[index], password || null);
         }
     } else {
-        
         if (!password) {
             alert('La contraseña es obligatoria para nuevos usuarios.');
             return;
         }
         const newId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1;
+        usuarios.push(new Usuario(newId, nombre, email, password, tipo, estado));
     }
 
     loadUsuarios();
@@ -172,8 +226,7 @@ if (searchInput) {
         const term = e.target.value.toLowerCase();
         const rows = usuariosTableBody.querySelectorAll('tr');
         rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(term) ? '' : 'none';
+            row.style.display = row.textContent.toLowerCase().includes(term) ? '' : 'none';
         });
     });
 }
@@ -183,7 +236,6 @@ closeModalBtn.addEventListener('click',  () => usuarioModal.classList.remove('mo
 cancelModalBtn.addEventListener('click', () => usuarioModal.classList.remove('modal--active'));
 usuarioForm.addEventListener('submit', saveUsuario);
 
-// Cerrar modal al hacer click fuera del contenido
 window.addEventListener('click', function(e) {
     if (e.target === usuarioModal) {
         usuarioModal.classList.remove('modal--active');
@@ -193,7 +245,6 @@ window.addEventListener('click', function(e) {
 (function checkViewport() {
     if (window.innerWidth < 600) {
         const ths = document.querySelectorAll('.table__th');
-        // En móvil ocultar columna "Tipo" (índice 1)
         [1].forEach(i => { if (ths[i]) ths[i].style.display = 'none'; });
         usuariosTableBody.querySelectorAll('tr').forEach(row => {
             const tds = row.querySelectorAll('td');

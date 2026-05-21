@@ -1,12 +1,10 @@
 (function initDashboard() {
-    const hoy = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const hoy = new Date().toISOString().slice(0, 10);
 
-    /* ---------- CARDS ---------- */
     const clientes = JSON.parse(sessionStorage.getItem("gymClients")) || [];
     const agenda = JSON.parse(sessionStorage.getItem("gymAgenda")) || [];
     const usuarios = JSON.parse(sessionStorage.getItem("gymUsuarios")) || [];
 
-    // Card 1 — Clientes activos
     const clientesActivos = clientes.filter((c) => c.estado === "activo").length;
     document.getElementById("cardClientesActivos").textContent = clientesActivos;
     document.getElementById("cardClientesFooter").textContent =
@@ -14,7 +12,6 @@
             ? clientes.length + " clientes en total"
             : "Sin clientes registrados";
 
-    // Card 2 — Clases hoy
     const clasesHoy = agenda.filter((e) => e.fecha === hoy);
     const manana = clasesHoy.filter((e) => parseInt(e.hora) < 14).length;
     const tarde = clasesHoy.filter((e) => parseInt(e.hora) >= 14).length;
@@ -24,12 +21,10 @@
             ? manana + " por la mañana · " + tarde + " por la tarde"
             : "Sin clases programadas hoy";
 
-    // Card 3 — Total usuarios
     document.getElementById("cardTotalUsuarios").textContent = usuarios.length;
     document.getElementById("cardUsuariosFooter").textContent =
         usuarios.filter((u) => u.estado === "activo").length + " usuarios activos";
 
-    // Card 4 — Instructores activos
     const instructoresActivos = usuarios.filter(
         (u) => u.tipo === "instructor" && u.estado === "activo",
     ).length;
@@ -38,7 +33,6 @@
         usuarios.filter((u) => u.tipo === "instructor").length +
         " instructores en total";
 
-    /* ---------- TABLA CLASES DE HOY ---------- */
     const tbody = document.getElementById("clasesHoyBody");
     if (clasesHoy.length === 0) {
         tbody.innerHTML = `

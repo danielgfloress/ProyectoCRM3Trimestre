@@ -14,7 +14,6 @@
 
     <div class="app">
 
-        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar__header">
                 <h1 class="sidebar__title">Gym<span class="sidebar__title--highlight">Tonic</span></h1>
@@ -32,7 +31,8 @@
                         </a>
                     </li>
                     <li class="sidebar__item">
-                        <a href="instructores.html" class="sidebar__link sidebar__link">
+                        <li class="sidebar__item">
+                        <a href="instructores.html" class="sidebar__link">
                             <i class="fas fa-chalkboard-teacher sidebar__icon"></i><span>Instructores</span>
                         </a>
                     </li>
@@ -61,10 +61,8 @@
             </nav>
         </aside>
 
-        <!-- MAIN -->
         <main class="main" id="main">
 
-            <!-- HEADER -->
             <header class="header" id="header">
                 <div class="header__left">
                     <button class="header__menu-btn" id="menuToggle">
@@ -81,7 +79,6 @@
                 </div>
             </header>
 
-            <!-- CONTENT -->
             <div class="content">
                 <div class="actions">
                     <div class="search">
@@ -93,7 +90,6 @@
                     </button>
                 </div>
 
-                <!-- CARDS -->
                 <div class="cards">
                     <div class="card">
                         <h3 class="card__title">Clases Activas</h3>
@@ -117,7 +113,6 @@
                     </div>
                 </div>
 
-                <!-- TABLE -->
                 <div class="table-container">
                     <table class="table">
                         <thead class="table__header">
@@ -264,7 +259,6 @@
         </main>
     </div>
 
-    <!-- MODAL NUEVA CLASE -->
     <div class="modal" id="claseModal">
         <div class="modal__content">
             <div class="modal__header">
@@ -278,8 +272,8 @@
                         <input type="text" id="nombreClase" class="form__control" required>
                     </div>
                     <div class="form__group">
-                        <label class="form__label" for="instructor">Instructor</label>
-                        <input type="text" id="instructor" class="form__control" required>
+                        <label class="form__label" for="instructorSelect">Instructor</label>
+                        <select id="instructorSelect" class="form__control"></select>
                     </div>
                     <div class="form__group">
                         <label class="form__label" for="horario">Horario</label>
@@ -308,6 +302,11 @@
 
     <script src="../js/crud-clases.js"></script>
     <script src="../js/menu.js"></script>
+    <script>
+        if (new URLSearchParams(window.location.search).get('action') === 'new') {
+            showAddClaseModal();
+        }
+    </script>
 </body>
 
 </html>

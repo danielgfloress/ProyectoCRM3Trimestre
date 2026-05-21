@@ -14,7 +14,6 @@
 
     <div class="app">
 
-        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar__header">
                 <h1 class="sidebar__title">Gym<span class="sidebar__title--highlight">Tonic</span></h1>
@@ -29,6 +28,12 @@
                     <li class="sidebar__item">
                         <a href="clientes.html" class="sidebar__link">
                             <i class="fas fa-users sidebar__icon"></i><span>Clientes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <li class="sidebar__item">
+                        <a href="instructores.html" class="sidebar__link">
+                            <i class="fas fa-chalkboard-teacher sidebar__icon"></i><span>Instructores</span>
                         </a>
                     </li>
                     <li class="sidebar__item">
@@ -55,10 +60,8 @@
             </nav>
         </aside>
 
-        <!-- MAIN -->
         <main class="main" id="main">
 
-            <!-- HEADER -->
             <header class="header" id="header">
                 <div class="header__left">
                     <button class="header__menu-btn" id="menuToggle">
@@ -75,7 +78,6 @@
                 </div>
             </header>
 
-            <!-- CONTENT -->
             <div class="content">
                 <div class="actions">
                     <div class="search">
@@ -87,7 +89,6 @@
                     </button>
                 </div>
 
-                <!-- CARDS -->
                 <div class="cards">
                     <div class="card">
                         <h3 class="card__title">Total Usuarios</h3>
@@ -111,13 +112,13 @@
                     </div>
                 </div>
 
-                <!-- TABLE -->
                 <div class="table-container">
                     <table class="table">
                         <thead class="table__header">
                             <tr>
                                 <th class="table__th">Nombre</th>
                                 <th class="table__th">Tipo</th>
+                                <th class="table__th">Estado</th>
                                 <th class="table__th">Acciones</th>
                             </tr>
                         </thead>
@@ -128,7 +129,6 @@
         </main>
     </div>
 
-    <!-- MODAL -->
     <div class="modal" id="usuarioModal">
         <div class="modal__content">
             <div class="modal__header">
@@ -137,7 +137,6 @@
             </div>
             <div class="modal__body">
                 <form id="usuarioForm">
-                    <!-- Campo oculto para el ID (distingue CREATE vs UPDATE) -->
                     <input type="hidden" id="usuarioId">
 
                     <div class="form__group">
@@ -161,6 +160,13 @@
                             <option value="cliente">Cliente</option>
                             <option value="instructor">Instructor</option>
                             <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="estado">Estado</label>
+                        <select id="estado" class="form__control">
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
                         </select>
                     </div>
                 </form>

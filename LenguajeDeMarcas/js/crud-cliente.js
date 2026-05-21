@@ -7,7 +7,7 @@ const closeModalBtn    = document.getElementById('closeModalBtn');
 const cancelModalBtn   = document.getElementById('cancelModalBtn');
 
 class Cliente {
-    constructor(id, nombre, telefono, email, membresia, vencimiento, estado) {
+    constructor(id, nombre, telefono, email, membresia, vencimiento, estado, usuarioId) {
         this.id          = id;
         this.nombre      = nombre;
         this.telefono    = telefono;
@@ -15,14 +15,14 @@ class Cliente {
         this.membresia   = membresia   || 'basica';
         this.vencimiento = vencimiento || '';
         this.estado      = estado      || 'activo';
+        this.usuarioId   = usuarioId   || null;
     }
 }
 
-
 let clients = JSON.parse(sessionStorage.getItem('gymClients')) || [
-    new Cliente(1, 'Juan Pérez',    '684 943 734', 'juan@xtart.com',   'premium', '2026-12-31', 'activo'),
-    new Cliente(2, 'María García',  '653 363 930', 'maria@xtart.com',  'basica',  '2026-11-15', 'activo'),
-    new Cliente(3, 'Carlos López',  '692 185 429', 'carlos@xtart.com', 'vip',     '2026-10-30', 'congelado'),
+    new Cliente(1, 'Juan Pérez',   '684 943 734', 'juan@xtart.com',   'premium', '2026-12-31', 'activo',    4),
+    new Cliente(2, 'María García', '653 363 930', 'maria@xtart.com',  'basica',  '2026-11-15', 'activo',    5),
+    new Cliente(3, 'Carlos López', '692 185 429', 'carlos@xtart.com', 'vip',     '2026-10-30', 'congelado', null),
 ];
 
 let editingClientId = null;
@@ -44,6 +44,40 @@ function getEstadoBadge(estado) {
         case 'congelado': return { cls: 'badge--warning', txt: 'Congelado' };
         default:          return { cls: 'badge--primary', txt: estado      };
     }
+}
+
+function syncClienteToUsuario(cliente, password) {
+    let usuarios = JSON.parse(sessionStorage.getItem('gymUsuarios')) || [];
+
+    if (cliente.usuarioId) {
+        const idx = usuarios.findIndex(u => u.id === cliente.usuarioId);
+        if (idx !== -1) {
+            usuarios[idx].nombre = cliente.nombre;
+            usuarios[idx].email  = cliente.email;
+            usuarios[idx].estado = cliente.estado === 'congelado' ? 'inactivo' : cliente.estado;
+            if (password) usuarios[idx].password = password;
+        }
+    } else {
+        const newId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1;
+        usuarios.push({
+            id:        newId,
+            nombre:    cliente.nombre,
+            email:     cliente.email,
+            password:  password,
+            tipo:      'cliente',
+            estado:    cliente.estado === 'congelado' ? 'inactivo' : cliente.estado,
+            clienteId: cliente.id
+        });
+        cliente.usuarioId = newId;
+    }
+
+    sessionStorage.setItem('gymUsuarios', JSON.stringify(usuarios));
+}
+
+function deleteUsuarioDeCliente(usuarioId) {
+    let usuarios = JSON.parse(sessionStorage.getItem('gymUsuarios')) || [];
+    usuarios = usuarios.filter(u => u.id !== usuarioId);
+    sessionStorage.setItem('gymUsuarios', JSON.stringify(usuarios));
 }
 
 function loadClients() {
@@ -87,6 +121,9 @@ function loadClients() {
 function showAddClientModal() {
     clientForm.reset();
     editingClientId = null;
+    document.getElementById('clientId').value = '';
+    document.getElementById('passwordHelp').style.display = 'none';
+    document.getElementById('password').required = true;
     modalTitle.textContent = 'Nuevo Cliente';
     clientModal.classList.add('modal--active');
 }
@@ -95,13 +132,16 @@ function editClient(id) {
     const client = clients.find(c => c.id === id);
     if (client) {
         editingClientId = client.id;
-        document.getElementById('clientId').value   = client.id;
-        document.getElementById('nombre').value      = client.nombre;
-        document.getElementById('telefono').value    = client.telefono;
-        document.getElementById('email').value       = client.email;
-        document.getElementById('membresia').value   = client.membresia;
-        document.getElementById('vencimiento').value = client.vencimiento;
-        document.getElementById('estado').value      = client.estado;
+        document.getElementById('clientId').value           = client.id;
+        document.getElementById('nombre').value              = client.nombre;
+        document.getElementById('telefono').value            = client.telefono;
+        document.getElementById('email').value               = client.email;
+        document.getElementById('password').value            = '';
+        document.getElementById('membresia').value           = client.membresia;
+        document.getElementById('vencimiento').value         = client.vencimiento;
+        document.getElementById('estado').value              = client.estado;
+        document.getElementById('password').required         = false;
+        document.getElementById('passwordHelp').style.display = 'block';
         modalTitle.textContent = 'Editar Cliente';
         clientModal.classList.add('modal--active');
     }
@@ -109,7 +149,11 @@ function editClient(id) {
 
 function deleteClient(id) {
     if (confirm('¿Estás seguro de que quieres eliminar este cliente?')) {
-        clients = clients.filter(client => client.id !== id);
+        const cliente = clients.find(c => c.id === id);
+        if (cliente && cliente.usuarioId) {
+            deleteUsuarioDeCliente(cliente.usuarioId);
+        }
+        clients = clients.filter(c => c.id !== id);
         loadClients();
     }
 }
@@ -118,38 +162,52 @@ function deleteClient(id) {
 function saveClient(e) {
     e.preventDefault();
 
-    const id = document.getElementById('clientId').value;
+    const id          = document.getElementById('clientId').value;
+    const nombre      = document.getElementById('nombre').value.trim();
+    const telefono    = document.getElementById('telefono').value.trim();
+    const email       = document.getElementById('email').value.trim();
+    const password    = document.getElementById('password').value;
+    const membresia   = document.getElementById('membresia').value;
+    const vencimiento = document.getElementById('vencimiento').value;
+    const estado      = document.getElementById('estado').value;
 
-    const clientData = {
-        nombre:      document.getElementById('nombre').value.trim(),
-        telefono:    document.getElementById('telefono').value.trim(),
-        email:       document.getElementById('email').value.trim(),
-        membresia:   document.getElementById('membresia').value,
-        vencimiento: document.getElementById('vencimiento').value,
-        estado:      document.getElementById('estado').value,
-    };
-
-    if (!clientData.nombre || !clientData.email) {
+    if (!nombre || !email) {
         alert('El nombre y el email son obligatorios.');
         return;
     }
 
+    const emailDuplicado = clients.some(c =>
+        c.email.toLowerCase() === email.toLowerCase() && c.id !== parseInt(id)
+    );
+    if (emailDuplicado) {
+        alert('Ya existe un cliente con ese email.');
+        return;
+    }
+
+    if (!id) {
+        const usuarios = JSON.parse(sessionStorage.getItem('gymUsuarios')) || [];
+        const emailEnUsuarios = usuarios.some(u => u.email.toLowerCase() === email.toLowerCase());
+        if (emailEnUsuarios) {
+            alert('Ya existe un usuario con ese email en el sistema.');
+            return;
+        }
+        if (!password) {
+            alert('La contraseña es obligatoria para nuevos clientes.');
+            return;
+        }
+    }
+
     if (id) {
-        // UPDATE — editar existente
         const index = clients.findIndex(c => c.id === parseInt(id));
-        if (index !== -1) clients[index] = { ...clients[index], ...clientData };
+        if (index !== -1) {
+            clients[index] = { ...clients[index], nombre, telefono, email, membresia, vencimiento, estado };
+            syncClienteToUsuario(clients[index], password || null);
+        }
     } else {
-        // CREATE — nuevo cliente
         const newId = clients.length > 0 ? Math.max(...clients.map(c => c.id)) + 1 : 1;
-        clients.push(new Cliente(
-            newId,
-            clientData.nombre,
-            clientData.telefono,
-            clientData.email,
-            clientData.membresia,
-            clientData.vencimiento,
-            clientData.estado
-        ));
+        const nuevo = new Cliente(newId, nombre, telefono, email, membresia, vencimiento, estado, null);
+        clients.push(nuevo);
+        syncClienteToUsuario(nuevo, password);
     }
 
     loadClients();
@@ -162,8 +220,7 @@ if (searchInput) {
         const term = e.target.value.toLowerCase();
         const rows = clientsTableBody.querySelectorAll('tr');
         rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(term) ? '' : 'none';
+            row.style.display = row.textContent.toLowerCase().includes(term) ? '' : 'none';
         });
     });
 }
@@ -173,7 +230,6 @@ closeModalBtn.addEventListener('click',  () => clientModal.classList.remove('mod
 cancelModalBtn.addEventListener('click', () => clientModal.classList.remove('modal--active'));
 clientForm.addEventListener('submit', saveClient);
 
-// Cerrar modal al hacer click fuera del contenido
 window.addEventListener('click', function(e) {
     if (e.target === clientModal) {
         clientModal.classList.remove('modal--active');
@@ -183,7 +239,6 @@ window.addEventListener('click', function(e) {
 (function checkViewport() {
     if (window.innerWidth < 600) {
         const ths = document.querySelectorAll('.table__th');
-        // En móvil ocultar columna "Vencimiento" (índice 3)
         [3].forEach(i => { if (ths[i]) ths[i].style.display = 'none'; });
         clientsTableBody.querySelectorAll('tr').forEach(row => {
             const tds = row.querySelectorAll('td');
@@ -191,5 +246,9 @@ window.addEventListener('click', function(e) {
         });
     }
 })();
+
+if (new URLSearchParams(window.location.search).get('action') === 'new') {
+    showAddClientModal();
+}
 
 loadClients();

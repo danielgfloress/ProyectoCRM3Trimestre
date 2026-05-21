@@ -170,9 +170,45 @@ function loadEventos() {
     renderCalendario();
 }
 
+function poblarSelectClases(claseSeleccionada) {
+    const select = document.getElementById('eventoClase');
+    if (!select) return;
+
+    const clases = JSON.parse(sessionStorage.getItem('gymClasses')) || [];
+    select.innerHTML = '<option value="">— Selecciona una clase —</option>';
+
+    clases.forEach(function(clase) {
+        const opt = document.createElement('option');
+        opt.value       = clase.nombre;
+        opt.dataset.instructorId = clase.instructorId || '';
+        opt.textContent = clase.nombre;
+        if (clase.nombre === claseSeleccionada) opt.selected = true;
+        select.appendChild(opt);
+    });
+
+    select.addEventListener('change', autorellenarInstructor);
+}
+
+function autorellenarInstructor() {
+    const select     = document.getElementById('eventoClase');
+    const selected   = select.options[select.selectedIndex];
+    const instructorId = selected ? parseInt(selected.dataset.instructorId) : null;
+    const instructorInput = document.getElementById('eventoInstructor');
+    if (!instructorInput) return;
+
+    if (instructorId) {
+        const instructores = JSON.parse(sessionStorage.getItem('gymInstructores')) || [];
+        const instructor = instructores.find(i => i.id === instructorId);
+        instructorInput.value = instructor ? instructor.nombre : '';
+    } else {
+        instructorInput.value = '';
+    }
+}
+
 function showAddEventoModal() {
     eventoForm.reset();
     editingEventoId = null;
+    poblarSelectClases(null);
     document.querySelector('#eventoModal .modal__title').textContent = 'Nuevo Evento';
     eventoModal.classList.add('modal--active');
 }
@@ -181,10 +217,12 @@ function editEvento(id) {
     const evento = eventos.find(e => e.id === id);
     if (evento) {
         editingEventoId = evento.id;
-        document.getElementById('eventoClase').value   = evento.clase;
+        poblarSelectClases(evento.clase);
         document.getElementById('eventoFecha').value   = evento.fecha;
         document.getElementById('eventoHora').value    = evento.hora;
         document.getElementById('eventoCliente').value = evento.cliente;
+
+        autorellenarInstructor();
         document.querySelector('#eventoModal .modal__title').textContent = 'Editar Evento';
         eventoModal.classList.add('modal--active');
     }
@@ -203,8 +241,8 @@ function saveEvento() {
     const hora    = document.getElementById('eventoHora').value;
     const cliente = document.getElementById('eventoCliente').value;
 
-    if (!fecha || !hora) {
-        alert('Por favor completa la fecha y la hora.');
+    if (!clase || !fecha || !hora) {
+        alert('Por favor completa la clase, la fecha y la hora.');
         return;
     }
 
@@ -285,13 +323,13 @@ function renderCalendario() {
     const hoy = new Date();
     const diaSemana = hoy.getDay();
     const dias = document.querySelectorAll('.agenda-day');
-    
-    const mapJS = [6, 0, 1, 2, 3, 4, 5]; 
+
+    const mapJS = [6, 0, 1, 2, 3, 4, 5];
     const idx = mapJS[diaSemana];
     if (dias[idx]) {
         dias[idx].classList.add('agenda-day--today');
     }
-    
+
     const lunes = new Date(hoy);
     lunes.setDate(hoy.getDate() - ((hoy.getDay() + 6) % 7));
     dias.forEach((dia, i) => {
