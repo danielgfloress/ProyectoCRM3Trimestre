@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="MembresiaRepositoryImpl add">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gymtonic/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/models/Usuario.java" afterDir="false" />
-    </list>
+    <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="MembresiaRepositoryImpl add" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +47,7 @@
     "Maven.Programacion [org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "feature/Programacion-Carlos",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/carlos/Desktop/DAM/CRM-Proyect/ProyectoCRM3Trimestre/Programacion",
     "node.js.detected.package.eslint": "true",
