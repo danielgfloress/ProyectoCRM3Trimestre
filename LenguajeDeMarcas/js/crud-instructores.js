@@ -17,8 +17,12 @@ class Instructor {
 }
 
 let instructores = JSON.parse(sessionStorage.getItem('gymInstructores')) || [
-    new Instructor(1, 'Carlos Ruiz',  'carlos@gymtonic.com', 'activo',   2),
-    new Instructor(2, 'Laura Vega',   'laura@gymtonic.com',  'activo',   3),
+    new Instructor(1, 'Bruno Quiroa',  'bruno@gymtonic.com', 'activo',   3),
+    new Instructor(2, 'Lihuak Romero',   'lihu@gymtonic.com',  'activo',   4),
+    new Instructor(3, 'Bermejo Cangrejo',   'berme@gymtonic.com',  'activo',   5),
+    new Instructor(4, 'David Bustamante',   'david@gymtonic.com',  'activo',   6),
+    new Instructor(5, 'Renzo Papi',   'renzo@gymtonic.com',  'activo',   7),
+    new Instructor(6, 'Diego Sniper',   'diego@gymtonic.com',  'activo',   8),
 ];
 
 function getInitials(name) {

@@ -20,8 +20,8 @@ class Cliente {
 }
 
 let clients = JSON.parse(sessionStorage.getItem('gymClients')) || [
-    new Cliente(1, 'Juan Pérez',   '684 943 734', 'juan@xtart.com',   'premium', '2026-12-31', 'activo',    4),
-    new Cliente(2, 'María García', '653 363 930', 'maria@xtart.com',  'basica',  '2026-11-15', 'activo',    5),
+    new Cliente(1, 'Diego Gargoles',   '684 943 734', 'diego@xtart.com',   'premium', '2026-12-31', 'activo',    9),
+    new Cliente(2, 'Javier Vega', '653 363 930', 'javi@xtart.com',  'basica',  '2026-11-15', 'activo',    10),
     new Cliente(3, 'Carlos López', '692 185 429', 'carlos@xtart.com', 'vip',     '2026-10-30', 'congelado', null),
 ];
 

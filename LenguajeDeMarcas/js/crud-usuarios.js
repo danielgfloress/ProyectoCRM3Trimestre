@@ -18,11 +18,16 @@ class Usuario {
 }
 
 let usuarios = JSON.parse(sessionStorage.getItem('gymUsuarios')) || [
-    { id: 1, nombre: 'Ana Martínez', email: 'ana@gymtonic.com',    password: 'Admin1234!', tipo: 'administrador', estado: 'activo'   },
-    { id: 2, nombre: 'Carlos Ruiz',  email: 'carlos@gymtonic.com', password: 'Instr5678!', tipo: 'instructor',    estado: 'activo',   instructorId: 1 },
-    { id: 3, nombre: 'Laura Vega',   email: 'laura@gymtonic.com',  password: 'Instr9012!', tipo: 'instructor',    estado: 'activo',   instructorId: 2 },
-    { id: 4, nombre: 'Juan Pérez',   email: 'juan@xtart.com',      password: 'Juan3456!',  tipo: 'cliente',       estado: 'activo',   clienteId: 1    },
-    { id: 5, nombre: 'María García', email: 'maria@xtart.com',     password: 'Mari7890!',  tipo: 'cliente',       estado: 'inactivo', clienteId: 2    },
+    { id: 1, nombre: 'Daniel García', email: 'dani@admin.gymtonic.com',    password: 'Admin1234', tipo: 'administrador', estado: 'activo'   },
+    { id: 2, nombre: 'Carlos Muñoz', email: 'carlos@admin.gymtonic.com',    password: 'Admin1234', tipo: 'administrador', estado: 'activo'   },
+    { id: 3, nombre: 'Bruno Quiroa', email: 'bruno@gymtonic.com',    password: 'Admin1234', tipo: 'instructor', estado: 'activo'   },
+    { id: 4, nombre: 'Lihuak Romero', email: 'lihu@gymtonic.com',    password: 'Admin1234', tipo: 'instructor', estado: 'activo'   },
+    { id: 5, nombre: 'Bermejo Cangrejo', email: 'berme@gymtonic.com',    password: 'Admin1234', tipo: 'instructor', estado: 'activo'   },
+    { id: 6, nombre: 'David Bustamante', email: 'david@gymtonic.com',    password: 'Admin1234', tipo: 'instructor', estado: 'activo'   },
+    { id: 7, nombre: 'Renzo Papi', email: 'renzo@gymtonic.com',    password: 'Admin1234', tipo: 'instructor', estado: 'activo'   },
+    { id: 8, nombre: 'Diego Sniper', email: 'diego@gymtonic.com',    password: 'Admin1234', tipo: 'instructor', estado: 'activo'   },
+    { id: 9, nombre: 'Diego Gargoles', email: 'diego@xtart.com',    password: 'Admin1234', tipo: 'cliente', estado: 'activo'   },
+    { id: 10, nombre: 'Javier Vega', email: 'javi@xtart.com',    password: 'Admin1234', tipo: 'cliente', estado: 'activo'   },
 ];
 
 let editingUsuarioId = null;

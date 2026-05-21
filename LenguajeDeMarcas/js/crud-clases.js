@@ -22,10 +22,10 @@ class Clase {
 let clases = JSON.parse(sessionStorage.getItem('gymClasses')) || [
     Object.assign(new Clase(1, 'Spinning',           1, 'Lun, Mié y Vie — 09:00', 20, 'avanzado'),      { inscritos: 20 }),
     Object.assign(new Clase(2, 'Yoga',               2, 'Mar y Jue — 10:30',      20, 'principiante'),  { inscritos: 15 }),
-    Object.assign(new Clase(3, 'Pilates',            2, 'Lun y Mié — 12:00',      15, 'intermedio'),    { inscritos: 12 }),
-    Object.assign(new Clase(4, 'Boxeo',              1, 'Mar y Jue — 19:00',      18, 'intermedio'),    { inscritos: 10 }),
-    Object.assign(new Clase(5, 'Musculación Guiada', 1, 'Lun a Vie — 18:00',      10, 'avanzado'),      { inscritos: 8  }),
-    Object.assign(new Clase(6, 'Zumba',              2, 'Mié y Vie — 20:00',      25, 'principiante'),  { inscritos: 18 }),
+    Object.assign(new Clase(3, 'Pilates',            3, 'Lun y Mié — 12:00',      15, 'intermedio'),    { inscritos: 12 }),
+    Object.assign(new Clase(4, 'Boxeo',              4, 'Mar y Jue — 19:00',      18, 'intermedio'),    { inscritos: 10 }),
+    Object.assign(new Clase(5, 'Musculación Guiada', 5, 'Lun a Vie — 18:00',      10, 'avanzado'),      { inscritos: 8  }),
+    Object.assign(new Clase(6, 'Zumba',              6, 'Mié y Vie — 20:00',      25, 'principiante'),  { inscritos: 18 }),
 ];
 
 let editingClaseId = null;
