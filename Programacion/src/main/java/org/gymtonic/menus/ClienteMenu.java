@@ -46,7 +46,6 @@ public class ClienteMenu {
                     System.out.println(clienteController.findById(sc.nextLong()));
                     break;
                 case 3:
-                    clienteController.findAll().forEach(System.out::println);
                     añadirCliente();
                     break;
                 case 4:
@@ -88,13 +87,9 @@ public class ClienteMenu {
         String direccion = pedirCampo("Dirección: ", v -> {
             if (v.isBlank()) throw new IllegalArgumentException("La dirección es obligatoria.");
         });
+
         clienteController.addCliente(new Cliente(nombre, email, telefono, direccion));
-        System.out.println("Cliente añadido correctamente.");try {
-            clienteController.addCliente(new Cliente(nombre, email, telefono, direccion));
-            System.out.println("Cliente añadido correctamente.");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error al añadir cliente: " + e.getMessage());
-        }
+        System.out.println("Cliente añadido correctamente.");
     }
 
     private void exportarClientes() {
