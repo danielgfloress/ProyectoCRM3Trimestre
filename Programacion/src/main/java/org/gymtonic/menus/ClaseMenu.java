@@ -6,7 +6,6 @@ import org.gymtonic.models.Clase;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
-
 public class ClaseMenu {
 
     private final Scanner sc;
@@ -32,6 +31,27 @@ public class ClaseMenu {
             opcion = sc.nextInt();
 
             switch (opcion) {
+                case 1:
+                    claseController.findAll().forEach(System.out::println);
+                    break;
+                case 2:
+                    System.out.print("ID: ");
+                    System.out.println(claseController.findById(sc.nextLong()));
+                    break;
+                case 3:
+                    añadirClase();
+                    break;
+                case 4:
+                    claseController.findAll().forEach(System.out::println);
+                    modificarClase();
+                    break;
+                case 5:
+                    eliminarClase();
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
             }
 
         } while (opcion != 6);
@@ -39,7 +59,6 @@ public class ClaseMenu {
     }
 
     private void añadirClase() {
-
         sc.nextLine();
         String nombre = pedirCampo("Nombre: ", v -> {
             if (v.isBlank()) throw new IllegalArgumentException("El nombre es obligatorio.");
@@ -60,7 +79,6 @@ public class ClaseMenu {
         });
         claseController.addClase(new Clase(nombre, instructor, horario, capacidad, nivel));
         System.out.println("Clase añadida correctamente.");
-
     }
 
     private void modificarClase() {
@@ -93,29 +111,21 @@ public class ClaseMenu {
     }
 
     private String pedirCampo(String etiqueta, Consumer<String> validacion) {
-
         while (true) {
-
             System.out.print(etiqueta);
             String valor = sc.nextLine();
-
             try {
                 validacion.accept(valor);
                 return valor;
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
             }
-
         }
-
     }
 
     private int pedirEntero(String etiqueta, Consumer<Integer> validacion) {
-
         while (true) {
-
             System.out.print(etiqueta);
-
             try {
                 int valor = Integer.parseInt(sc.nextLine());
                 validacion.accept(valor);
@@ -126,7 +136,6 @@ public class ClaseMenu {
                 System.out.println("Error: " + e.getMessage());
             }
         }
-
     }
 
 }
