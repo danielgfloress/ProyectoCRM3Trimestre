@@ -15,7 +15,8 @@ public class ConfiguracionGym {
 
     public ConfiguracionGym() {}
 
-    public ConfiguracionGym(String gymEmail, String gymTelefono, String gymDireccion, String horarioLvAbre, String horarioLvCierra, String horarioSabAbre, String horarioSabCierra, Long usuarioId) {
+    public ConfiguracionGym(String gymNombre,String gymEmail, String gymTelefono, String gymDireccion, String horarioLvAbre, String horarioLvCierra, String horarioSabAbre, String horarioSabCierra, Long usuarioId) {
+        this.gymNombre = gymNombre;
         this.gymEmail = gymEmail;
         this.gymTelefono = gymTelefono;
         this.gymDireccion = gymDireccion;
@@ -63,7 +64,7 @@ public class ConfiguracionGym {
 
     @Override
     public String toString() {
-        return "Configuracion{" +
+        return "Configuracion: " +
                 "id=" + id +
                 ", gymNombre= " + gymNombre +
                 ", gymEmail= " + gymEmail +

@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efc60e12-0916-4131-a1e5-359e52f5cece" name="Changes" comment="MembresiaRepositoryImpl add">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/gymtonic/menus/AgendaMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/menus/AgendaMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gymtonic/menus/ConfiguracionGymMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/menus/ConfiguracionGymMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/gymtonic/models/ConfiguracionGym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/gymtonic/models/ConfiguracionGym.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +119,7 @@
       <updated>1778666010712</updated>
       <workItem from="1778666015759" duration="33000" />
       <workItem from="1778842387455" duration="606000" />
-      <workItem from="1779345874067" duration="2784000" />
+      <workItem from="1779345874067" duration="3295000" />
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />

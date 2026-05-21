@@ -49,6 +49,10 @@ public class ConfiguracionGymMenu {
 
 
     private void modificarConfiguracion() {
+
+        String gymNombre = pedirCampo("Nuevo nombre del gimnasio: ", v -> {
+            if (v.isBlank()) throw new IllegalArgumentException("El nombre es obligatorio.");
+        });
         String gymEmail = pedirCampo("Nuevo email: ", v -> {
             if (!v.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
                 throw new IllegalArgumentException("El formato del email no es válido.");
@@ -68,7 +72,7 @@ public class ConfiguracionGymMenu {
             if (v < 0) throw new IllegalArgumentException("El ID no puede ser negativo.");
         });
         Long usuarioId = usuarioRaw == 0 ? null : usuarioRaw;
-        System.out.println(configuracionGymController.modifyConfiguracion(1L, new ConfiguracionGym(gymEmail, gymTelefono, gymDireccion, lvAbre, lvCierra, sabAbre, sabCierra, usuarioId)) ? "Configuración modificada." : "No encontrada.");
+        System.out.println(configuracionGymController.modifyConfiguracion(1L, new ConfiguracionGym(gymNombre,gymEmail, gymTelefono, gymDireccion, lvAbre, lvCierra, sabAbre, sabCierra, usuarioId)) ? "Configuración modificada." : "No encontrada.");
     }
 
     private String pedirCampo(String etiqueta, Consumer<String> validacion) {
