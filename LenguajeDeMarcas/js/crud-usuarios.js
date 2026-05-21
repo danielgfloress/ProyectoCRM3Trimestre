@@ -119,9 +119,6 @@ function loadUsuarios() {
                 <span class="badge ${tipoBadge.cls}">${tipoBadge.txt}</span>
             </td>
             <td class="table__td">
-                <span class="badge ${estadoBadge.cls}">${estadoBadge.txt}</span>
-            </td>
-            <td class="table__td">
                 <div class="table__actions">
                     <button class="table__btn table__btn--edit"   onclick="editUsuario(${usuario.id})">Editar</button>
                     <button class="table__btn table__btn--delete" onclick="deleteUsuario(${usuario.id})">Eliminar</button>
