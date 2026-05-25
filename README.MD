@@ -20,7 +20,7 @@ ProyectoCRM3Trimestre/
 ## 🗃️ Bases de Datos
 
 ### Descripción
-Scripts SQL para dos entornos distintos: **MySQL (Workbench)** y **Oracle**. Incluye DDL, DML con datos de prueba, cursores y procedimientos/funciones PL/SQL
+Scripts SQL para dos entornos distintos: **MySQL (Workbench)** y **Oracle**. Incluye DDL, DML con datos de prueba, cursores y procedimientos/funciones PL/SQL.
 
 ### Archivos
 | Archivo | Descripción |
