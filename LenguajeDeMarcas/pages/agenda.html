@@ -31,7 +31,8 @@
                         </a>
                     </li>
                     <li class="sidebar__item">
-                        <a href="instructores.html" class="sidebar__link sidebar__link">
+                        <li class="sidebar__item">
+                        <a href="instructores.html" class="sidebar__link">
                             <i class="fas fa-chalkboard-teacher sidebar__icon"></i><span>Instructores</span>
                         </a>
                     </li>
@@ -45,6 +46,7 @@
                             <i class="fas fa-calendar-alt sidebar__icon"></i><span>Agenda</span>
                         </a>
                     </li>
+                    
                     <li class="sidebar__item">
                         <a href="usuarios.html" class="sidebar__link">
                             <i class="fas fa-user-shield sidebar__icon"></i><span>Usuarios</span>
@@ -193,14 +195,11 @@
                 <form id="eventoForm">
                     <div class="form__group">
                         <label class="form__label" for="eventoClase">Clase</label>
-                        <select id="eventoClase" class="form__control">
-                            <option>Spinning</option>
-                            <option>Yoga</option>
-                            <option>Pilates</option>
-                            <option>Boxeo</option>
-                            <option>Musculación Guiada</option>
-                            <option>Zumba</option>
-                        </select>
+                        <select id="eventoClase" class="form__control"></select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="eventoInstructor">Instructor</label>
+                        <input type="text" id="eventoInstructor" class="form__control" placeholder="Se rellena automáticamente" readonly>
                     </div>
                     <div class="form__group">
                         <label class="form__label" for="eventoFecha">Fecha</label>

@@ -17,7 +17,6 @@ class Membresia {
     }
 }
 
-
 const configDefaults = {
     gymNombre:      'GymTonic',
     gymEmail:       'info@gymtonic.com',
@@ -192,11 +191,11 @@ function saveMembresia(e) {
     }
 
     if (id) {
-        // UPDATE — editar existente
+
         const index = membresias.findIndex(m => m.id === parseInt(id));
         if (index !== -1) membresias[index] = { ...membresias[index], ...membresiaData };
     } else {
-        // CREATE — nueva membresia
+
         const newId = membresias.length > 0 ? Math.max(...membresias.map(m => m.id)) + 1 : 1;
         membresias.push(new Membresia(
             newId,

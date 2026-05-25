@@ -14,7 +14,6 @@
 
     <div class="app">
 
-        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar__header">
                 <h1 class="sidebar__title">Gym<span class="sidebar__title--highlight">Tonic</span></h1>
@@ -32,6 +31,12 @@
                         </a>
                     </li>
                     <li class="sidebar__item">
+                        <li class="sidebar__item">
+                        <a href="pages/instructores.html" class="sidebar__link">
+                            <i class="fas fa-chalkboard-teacher sidebar__icon"></i><span>Instructores</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
                         <a href="pages/clases.html" class="sidebar__link">
                             <i class="fas fa-dumbbell sidebar__icon"></i><span>Clases</span>
                         </a>
@@ -39,6 +44,11 @@
                     <li class="sidebar__item">
                         <a href="pages/agenda.html" class="sidebar__link">
                             <i class="fas fa-calendar-alt sidebar__icon"></i><span>Agenda</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="pages/usuarios.html" class="sidebar__link sidebar__link">
+                            <i class="fas fa-user-shield sidebar__icon"></i><span>Usuarios</span>
                         </a>
                     </li>
                     <li class="sidebar__item">
@@ -50,10 +60,8 @@
             </nav>
         </aside>
 
-        <!-- MAIN -->
         <main class="main" id="main">
 
-            <!-- HEADER -->
             <header class="header" id="header">
                 <div class="header__left">
                     <button class="header__menu-btn" id="menuToggle">
@@ -70,10 +78,8 @@
                 </div>
             </header>
 
-            <!-- CONTENT -->
             <div class="content">
 
-                <!-- WELCOME -->
                 <div class="welcome">
                     <div class="welcome__text">
                         <h3 class="welcome__title">¡Bienvenido, Admin!</h3>
@@ -81,119 +87,60 @@
                     </div>
                 </div>
 
-                <!-- CARDS -->
                 <div class="cards">
                     <div class="card">
                         <h3 class="card__title">Clientes Activos</h3>
-                        <p class="card__value">124</p>
-                        <div class="card__footer card__footer--success">+5% este mes</div>
+                        <p class="card__value" id="cardClientesActivos">—</p>
+                        <div class="card__footer card__footer--success" id="cardClientesFooter"></div>
                     </div>
                     <div class="card">
                         <h3 class="card__title">Clases Hoy</h3>
-                        <p class="card__value">8</p>
-                        <div class="card__footer">3 por la mañana · 5 por la tarde</div>
+                        <p class="card__value" id="cardClasesHoy">—</p>
+                        <div class="card__footer" id="cardClasesFooter"></div>
                     </div>
                     <div class="card">
-                        <h3 class="card__title">Ingresos del Mes</h3>
-                        <p class="card__value">€4.280</p>
-                        <div class="card__footer card__footer--success">+8% vs mes anterior</div>
+                        <h3 class="card__title">Total Usuarios</h3>
+                        <p class="card__value" id="cardTotalUsuarios">—</p>
+                        <div class="card__footer" id="cardUsuariosFooter"></div>
                     </div>
                     <div class="card">
-                        <h3 class="card__title">Membresías por Vencer</h3>
-                        <p class="card__value">7</p>
-                        <div class="card__footer card__footer--warning">Esta semana</div>
+                        <h3 class="card__title">Instructores Activos</h3>
+                        <p class="card__value" id="cardInstructores">—</p>
+                        <div class="card__footer card__footer--success" id="cardInstructoresFooter"></div>
                     </div>
                 </div>
 
-                <!-- ACTIVIDAD RECIENTE -->
+                <div class="quick-actions">
+                    <a href="pages/clientes.html?action=new" class="quick-action">
+                        <div class="quick-action__icon"><i class="fas fa-user-plus"></i></div>
+                        <span class="quick-action__label">Nuevo Cliente</span>
+                    </a>
+                    <a href="pages/clases.html?action=new" class="quick-action">
+                        <div class="quick-action__icon"><i class="fas fa-dumbbell"></i></div>
+                        <span class="quick-action__label">Nueva Clase</span>
+                    </a>
+                    <a href="pages/instructores.html?action=new" class="quick-action">
+                        <div class="quick-action__icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <span class="quick-action__label">Nuevo Instructor</span>
+                    </a>
+                    <a href="pages/agenda.html?action=new" class="quick-action">
+                        <div class="quick-action__icon"><i class="fas fa-calendar-alt"></i></div>
+                        <span class="quick-action__label">Nuevo Evento</span>
+                    </a>
+                </div>
+
+                <h3 class="table-container__title">Clases de hoy</h3>
+
                 <div class="table-container">
                     <table class="table">
                         <thead class="table__header">
                             <tr>
-                                <th class="table__th">Cliente</th>
-                                <th class="table__th">Actividad</th>
-                                <th class="table__th">Clase</th>
                                 <th class="table__th">Hora</th>
-                                <th class="table__th">Estado</th>
+                                <th class="table__th">Clase</th>
+                                <th class="table__th">Cliente / Alumno</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="table__td">
-                                    <div class="table__user">
-                                        <div class="table__avatar">JP</div>
-                                        <div>
-                                            <div class="table__name">Juan Pérez</div>
-                                            <div class="table__email">juan@xtart.com</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="table__td">Check-in</td>
-                                <td class="table__td">Spinning</td>
-                                <td class="table__td">09:00</td>
-                                <td class="table__td"><span class="badge badge--success">Asistió</span></td>
-                            </tr>
-                            <tr>
-                                <td class="table__td">
-                                    <div class="table__user">
-                                        <div class="table__avatar">MG</div>
-                                        <div>
-                                            <div class="table__name">María García</div>
-                                            <div class="table__email">maria@xtart.com</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="table__td">Reserva</td>
-                                <td class="table__td">Yoga</td>
-                                <td class="table__td">10:30</td>
-                                <td class="table__td"><span class="badge badge--primary">Reservado</span></td>
-                            </tr>
-                            <tr>
-                                <td class="table__td">
-                                    <div class="table__user">
-                                        <div class="table__avatar">CL</div>
-                                        <div>
-                                            <div class="table__name">Carlos López</div>
-                                            <div class="table__email">carlos@xtart.com</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="table__td">Renovación</td>
-                                <td class="table__td">Membresía VIP</td>
-                                <td class="table__td">11:15</td>
-                                <td class="table__td"><span class="badge badge--success">Completado</span></td>
-                            </tr>
-                            <tr>
-                                <td class="table__td">
-                                    <div class="table__user">
-                                        <div class="table__avatar">LR</div>
-                                        <div>
-                                            <div class="table__name">Laura Ruiz</div>
-                                            <div class="table__email">laura@xtart.com</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="table__td">Check-in</td>
-                                <td class="table__td">Pilates</td>
-                                <td class="table__td">12:00</td>
-                                <td class="table__td"><span class="badge badge--success">Asistió</span></td>
-                            </tr>
-                            <tr>
-                                <td class="table__td">
-                                    <div class="table__user">
-                                        <div class="table__avatar">AM</div>
-                                        <div>
-                                            <div class="table__name">Andrés Mora</div>
-                                            <div class="table__email">andres@xtart.com</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="table__td">Alta nueva</td>
-                                <td class="table__td">—</td>
-                                <td class="table__td">13:40</td>
-                                <td class="table__td"><span class="badge badge--warning">Pendiente pago</span></td>
-                            </tr>
-                        </tbody>
+                        <tbody id="clasesHoyBody"></tbody>
                     </table>
                 </div>
 
@@ -203,6 +150,7 @@
 
     <script src="js/fecha.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/dashboard.js"></script>
 </body>
 
 </html>
