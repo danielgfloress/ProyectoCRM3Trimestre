@@ -2,7 +2,7 @@
 
 **Curso:** 1º de DAM (Desarrollo de Aplicaciones Multiplataforma)  
 **Alumnos:** Carlos Muñoz · Daniel Garcia  
-**Proyecto:** GymTonic CRM — Sistema de gestión para gimnasio
+**Proyecto:** GymTonic CRM 
 
 ---
 
